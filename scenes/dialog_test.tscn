@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b3get38rrj6lt"]
+
+[ext_resource type="Script" uid="uid://c7py8w66008ws" path="res://scripts/dialog/dialog_manager.gd" id="1_06prf"]
+[ext_resource type="PackedScene" uid="uid://70mqawldnge" path="res://scenes/dialog_box.tscn" id="1_f4v0s"]
+[ext_resource type="Script" uid="uid://37gjw0vakjw1" path="res://scripts/dialog/resources/dialog.gd" id="2_4k4dp"]
+[ext_resource type="Script" uid="uid://b7h5l8uj1r70x" path="res://scripts/dialog/resources/dialog_types/text_dialog.gd" id="3_07oah"]
+[ext_resource type="Resource" uid="uid://o051ka38mlni" path="res://assets/dialog/speakers/pepsi_man.tres" id="4_r0p54"]
+[ext_resource type="Script" uid="uid://cs3md0jmnapvw" path="res://scripts/dialog/resources/dialog_sequence.gd" id="5_87qe6"]
+
+[sub_resource type="Resource" id="Resource_pket2"]
+script = ExtResource("3_07oah")
+speaker = ExtResource("4_r0p54")
+text = "Hello, I am mr. bepis. Would you like to minimum taste, maximum sugar?"
+metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
+[sub_resource type="Resource" id="Resource_4k4dp"]
+script = ExtResource("3_07oah")
+speaker = ExtResource("4_r0p54")
+text = "b e p i s"
+metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
+[sub_resource type="Resource" id="Resource_rpmu6"]
+script = ExtResource("5_87qe6")
+dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_pket2"), SubResource("Resource_4k4dp")])
+metadata/_custom_type_script = "uid://cs3md0jmnapvw"
+
+[node name="DialogTest" type="Node2D" unique_id=1908033355]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1076451925]
+
+[node name="DialogBox" parent="CanvasLayer" unique_id=1946601530 instance=ExtResource("1_f4v0s")]
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -220.0
+grow_vertical = 0
+
+[node name="DialogManager" type="Node" parent="." unique_id=1679539841]
+unique_name_in_owner = true
+script = ExtResource("1_06prf")
+current_sequence = SubResource("Resource_rpmu6")
