@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://6w75cc8gomib"]
+
+[ext_resource type="Texture2D" uid="uid://lsgwajh8yud5" path="res://sprites/influencer.png" id="1_yh51m"]
+
+[node name="Influencer" type="Node2D" unique_id=1481530276]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=159383220]
+position = Vector2(-4, -42)
+texture = ExtResource("1_yh51m")

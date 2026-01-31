@@ -37,6 +37,7 @@ metadata/_aseprite_wizard_config_ = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759555526]
 texture_filter = 1
+position = Vector2(0, -42)
 sprite_frames = SubResource("SpriteFrames_2cm76")
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
