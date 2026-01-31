@@ -9,7 +9,6 @@ resource_local_to_scene = true
 size = Vector2(320, 180)
 
 [node name="World" type="Node2D" unique_id=1951058929]
-script = ExtResource("1_nnsk1")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1570538531 groups=["clickableObject"]]
 script = ExtResource("2_rwgxs")
@@ -43,6 +42,9 @@ offset_bottom = 10.0
 mouse_filter = 2
 texture = ExtResource("3_4wyf3")
 metadata/_edit_lock_ = true
+
+[node name="ClickManager" type="Node2D" parent="." unique_id=2009241512]
+script = ExtResource("1_nnsk1")
 
 [connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]
