@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://qlmpkcvm4uwu"]
+
+[ext_resource type="Texture2D" uid="uid://l7nocxxj8u0m" path="res://sprites/basement.png" id="1_wvfle"]
+[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_etyrx"]
+
+[node name="Basement" type="Node2D" unique_id=782234505]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=572774069]
+texture = ExtResource("1_wvfle")
+
+[node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_etyrx")]
+position = Vector2(45, 89)

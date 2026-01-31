@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b36x4v88t5dm8"]
+
+[ext_resource type="Texture2D" uid="uid://dde0fkmsqa1n6" path="res://sprites/victim-apartment.png" id="1_cj480"]
+[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_vq267"]
+
+[node name="VictimApartment" type="Node2D" unique_id=549744487]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=629468322]
+texture = ExtResource("1_cj480")
+
+[node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_vq267")]
+position = Vector2(119, 53)
