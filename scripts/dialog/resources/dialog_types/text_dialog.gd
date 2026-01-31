@@ -10,8 +10,15 @@ var speaker: DialogSpeaker
 var text: String
 
 func on_display(box: DialogBox, manager: DialogManager) -> void:
-	box.speaker_label.text = speaker.name
-	box.text_label.text = text
+	var spkr := speaker
+	
+	if not speaker:
+		spkr = manager.last_speaker
+		
+	manager.last_speaker = spkr
+		
+	box.speaker_label.text = spkr.name
+	box.text_label.crawl(text)
 	
 	if not show_button:
 		return

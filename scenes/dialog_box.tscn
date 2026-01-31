@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://70mqawldnge"]
 
 [ext_resource type="Script" uid="uid://ucplogok47cu" path="res://scripts/dialog/dialog_box.gd" id="1_xvd2c"]
+[ext_resource type="Script" uid="uid://bd56j34j4easx" path="res://scripts/crawling_text.gd" id="2_tihiy"]
 
 [node name="DialogBox" type="Panel" unique_id=1946601530 node_paths=PackedStringArray("speaker_label", "text_label", "options_buttons")]
 anchors_preset = 15
@@ -41,6 +42,8 @@ spanning multiple lines
 yo"
 fit_content = true
 scroll_active = false
+script = ExtResource("2_tihiy")
+letters_per_second = 50.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GridContainer" unique_id=1980235488]
 layout_mode = 2

@@ -13,7 +13,7 @@ var slide_animation_duration := 1.0
 var speaker_label: RichTextLabel
 
 @export 
-var text_label: RichTextLabel
+var text_label: CrawlingText
 
 @export
 var options_buttons: Array[Button]

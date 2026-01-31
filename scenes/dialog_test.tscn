@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://cs3md0jmnapvw" path="res://scripts/dialog/resources/dialog_sequence.gd" id="5_87qe6"]
 [ext_resource type="Script" uid="uid://batlbawr5yaer" path="res://scripts/dialog/resources/dialog_types/choice_dialog.gd" id="5_r0p54"]
 
+[sub_resource type="Resource" id="Resource_tstnq"]
+script = ExtResource("3_07oah")
+speaker = ExtResource("4_r0p54")
+text = "Hey there kid"
+metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
 [sub_resource type="Resource" id="Resource_87qe6"]
 script = ExtResource("3_07oah")
 speaker = ExtResource("4_r0p54")
@@ -24,6 +30,7 @@ metadata/_custom_type_script = "uid://kmxq24muu12r"
 
 [sub_resource type="Resource" id="Resource_rpmu6"]
 script = ExtResource("3_07oah")
+speaker = ExtResource("4_r0p54")
 text = "That's what I am talking about"
 metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
 
@@ -36,13 +43,12 @@ metadata/_custom_type_script = "uid://kmxq24muu12r"
 [sub_resource type="Resource" id="Resource_4con6"]
 script = ExtResource("5_r0p54")
 choices = Array[ExtResource("4_07oah")]([SubResource("Resource_pket2"), SubResource("Resource_ljip2")])
-speaker = ExtResource("4_r0p54")
 text = "Are you ready for the pain?"
 metadata/_custom_type_script = "uid://batlbawr5yaer"
 
 [sub_resource type="Resource" id="Resource_e4rgx"]
 script = ExtResource("5_87qe6")
-dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_4con6")])
+dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_tstnq"), SubResource("Resource_4con6")])
 metadata/_custom_type_script = "uid://cs3md0jmnapvw"
 
 [node name="DialogTest" type="Node2D" unique_id=1908033355]

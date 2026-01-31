@@ -10,6 +10,8 @@ signal exiting_dialog_playback
 signal exiting_dialog_sequence(sequence: DialogSequence)
 signal exiting_dialog(dialog: Dialog)
 
+var last_speaker: DialogSpeaker
+
 var _current_sequence: DialogSequence
 var _playing := false
 var _sequence_index := -1
@@ -44,6 +46,7 @@ func start_dialog(seq: DialogSequence) -> Error:
 		return ERR_ALREADY_IN_USE
 	
 	_playing = true
+	last_speaker = null
 	
 	# This is done to make sure current_sequence is set when entering_dialog is emitted.
 	# Want entering_dialog to run before entering_dialog_sequence
