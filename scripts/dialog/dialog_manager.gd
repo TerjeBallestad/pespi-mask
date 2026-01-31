@@ -13,6 +13,11 @@ signal exiting_dialog(dialog: Dialog)
 var _current_sequence: DialogSequence
 var _playing := false
 var _sequence_index := -1
+var _previous_node_condition_result := true
+
+var previous_node_condition_result: bool:
+	get:
+		return _previous_node_condition_result
 
 # TODO: Should not be exported. Need controllable functions for this and a signal upon assignment
 @export
@@ -67,29 +72,35 @@ func next_dialog() -> Error:
 		exiting_dialog.emit(current_dialog)
 	
 	var loop_count := 0
+	
 	while true:
 		loop_count += 1
 		if loop_count > 100:
 			print("LOOP BROKEN") # HACK: This shouldn't need to be here but I am paranoid
 			break
-			
+		
 		_sequence_index += 1
+	
 		
 		# End of dialog. Stopping
 		if not current_dialog:
 			stop_dialog()
 			return OK
 			
+		# Important to do this here, before returning for disabled nodes. 
+		# Because we don't want a node's disabledness to affect nodes below it
+		var condition_result := not current_dialog.condition or current_dialog.condition.is_condition_met(self)
+		if current_dialog.group_with_above:
+			condition_result = condition_result and previous_node_condition_result
+			
+		_previous_node_condition_result = condition_result
+			
 		# Disabled dialog. Automatic not OK
 		if not current_dialog.enabled:
 			continue
 			
-		# No condition. OK
-		if not current_dialog.condition:
-			break
-			
-		# Condition that is met. OK
-		if current_dialog.condition.is_condition_met(self):
+		# Condition that is met. OK unless group_with_above is set and node above is false
+		if condition_result:
 			break
 	
 		# Otherwise condition isn't met. Not OK
