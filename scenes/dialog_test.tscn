@@ -28,11 +28,16 @@ metadata/_custom_type_script = "uid://cs3md0jmnapvw"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1076451925]
 
-[node name="DialogBox" parent="CanvasLayer" unique_id=1946601530 instance=ExtResource("1_f4v0s")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=2035163553]
+root_node = NodePath("../..")
+
+[node name="DialogBox" parent="CanvasLayer/AnimationPlayer" unique_id=1946601530 instance=ExtResource("1_f4v0s")]
 anchors_preset = 12
 anchor_top = 1.0
-offset_top = -220.0
+offset_top = -172.0
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+slide_animation_duration = 0.3
 
 [node name="DialogManager" type="Node" parent="." unique_id=1679539841]
 unique_name_in_owner = true
