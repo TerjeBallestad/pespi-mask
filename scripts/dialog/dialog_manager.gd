@@ -67,6 +67,7 @@ func next_dialog() -> Error:
 	# Dialog sequence exhaused without being redirected
 	if current_dialog == null:
 		stop_dialog()
+		return OK
 		
 	entering_dialog.emit(current_dialog)
 		

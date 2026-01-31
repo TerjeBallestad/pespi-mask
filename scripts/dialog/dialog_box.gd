@@ -1,4 +1,4 @@
-extends Control
+class_name DialogBox extends Control
 
 @onready
 var _original_y := position.y
@@ -17,18 +17,16 @@ func _ready():
 	%DialogManager.entering_dialog.connect(_on_entering_dialog)
 	%DialogManager.exiting_dialog_playback.connect(_on_exiting_dialog_playback)
 	position.y = _original_y + size.y
-			
-func _process(_delta: float):
-	if Input.is_action_just_pressed("ui_accept"):
-		%DialogManager.next_dialog()
+
+func _process(delta: float):
+	if %DialogManager.playing:
+		%DialogManager.current_dialog.process(delta, %DialogManager)
 		
 func _on_entering_dialog_playback():
 	slide_in()
 		
 func _on_entering_dialog(dialog: Dialog):
-	if dialog is TextDialog:
-		speaker_label.text = dialog.speaker.name
-		text_label.text = dialog.text
+	dialog.on_display(self, %DialogManager)
 		
 func _on_exiting_dialog_playback():
 	slide_out()
