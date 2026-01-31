@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://chxbyp78tria"]
+
+[node name="Polygon2D" type="Polygon2D" unique_id=818109327 groups=["Ground"]]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(305, 174, 258, 143, 65, 142, 31, 177)

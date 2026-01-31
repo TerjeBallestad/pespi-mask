@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://dbvi034itsnel" path="res://sprites/test.png" id="1_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://6w75cc8gomib" path="res://scenes/influencer.tscn" id="3_4wyf3"]
+[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="3_qfnet"]
 [ext_resource type="PackedScene" uid="uid://dtbesobclkmyj" path="res://scenes/overachiever.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://cvafxmihkjc45" path="res://scenes/retiree.tscn" id="5_71j4m"]
+[ext_resource type="PackedScene" uid="uid://chxbyp78tria" path="res://scenes/ground_example.tscn" id="7_i7141"]
 
 [node name="World" type="Node2D" unique_id=1951058929]
 
@@ -36,6 +38,11 @@ metadata/_aseprite_wizard_interface_config_ = {
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_4wyf3")]
 position = Vector2(210, 165)
 
+[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=1465756816 node_paths=PackedStringArray("background")]
+position = Vector2(-210, -165)
+script = ExtResource("3_qfnet")
+background = NodePath("../../Test")
+
 [node name="Influencer" parent="." unique_id=1481530276 instance=ExtResource("3_4wyf3")]
 position = Vector2(71, 167)
 
@@ -44,3 +51,7 @@ position = Vector2(118, 166)
 
 [node name="Retiree" parent="." unique_id=908568966 instance=ExtResource("5_71j4m")]
 position = Vector2(159, 162)
+
+[node name="Polygon2D" parent="." unique_id=818109327 instance=ExtResource("7_i7141")]
+polygon = PackedVector2Array(-118.399994, -2.7999954)
+uv = PackedVector2Array(-118.399994, -2.7999954)
