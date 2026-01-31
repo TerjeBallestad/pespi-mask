@@ -6,8 +6,8 @@
 [node name="World" type="Node2D" unique_id=1951058929]
 
 [node name="Test" type="Sprite2D" parent="." unique_id=1670820247]
-position = Vector2(252, 296)
+position = Vector2(160, 90)
 texture = ExtResource("1_rwgxs")
 
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_4wyf3")]
-position = Vector2(292, 321)
+position = Vector2(210, 120)
