@@ -1,9 +1,52 @@
-[gd_scene format=3 uid="uid://b3get38rrj6lt"]
+[gd_scene format=3 uid="uid://15ykd2m3w2wd"]
 
+[ext_resource type="PackedScene" uid="uid://beouv1evjqm0s" path="res://scenes/click_manager.tscn" id="1_o8fc1"]
 [ext_resource type="Texture2D" uid="uid://dbvi034itsnel" path="res://sprites/test.png" id="1_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_4wyf3"]
+[ext_resource type="Script" uid="uid://yu2wywsgdadg" path="res://scripts/pepsi_manager.gd" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://70mqawldnge" path="res://scenes/ui/dialog_box.tscn" id="4_k0juu"]
+[ext_resource type="Script" uid="uid://c7py8w66008ws" path="res://scripts/dialog/dialog_manager.gd" id="4_qfnet"]
+[ext_resource type="Theme" uid="uid://crfgr67xom60a" path="res://assets/ui/base_theme.tres" id="5_71j4m"]
+[ext_resource type="Script" uid="uid://dix121h46yokc" path="res://scripts/npc.gd" id="7_jhx03"]
+[ext_resource type="Script" uid="uid://37gjw0vakjw1" path="res://scripts/dialog/resources/dialog.gd" id="8_o8fc1"]
+[ext_resource type="Script" uid="uid://b7h5l8uj1r70x" path="res://scripts/dialog/resources/dialog_types/text_dialog.gd" id="9_xo05s"]
+[ext_resource type="Resource" uid="uid://o051ka38mlni" path="res://assets/dialog/speakers/pepsi_man.tres" id="10_dss4m"]
+[ext_resource type="Script" uid="uid://cs3md0jmnapvw" path="res://scripts/dialog/resources/dialog_sequence.gd" id="11_7t5mc"]
+[ext_resource type="Script" uid="uid://d02i4e02ny1ve" path="res://scripts/dialog/resources/dialog_speaker.gd" id="12_lakw3"]
+[ext_resource type="Texture2D" uid="uid://dk5aojxc0b4u3" path="res://icon.svg" id="13_pm21f"]
+
+[sub_resource type="Resource" id="Resource_2lf6f"]
+script = ExtResource("9_xo05s")
+speaker = ExtResource("10_dss4m")
+text = "What?"
+metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
+[sub_resource type="Resource" id="Resource_7iits"]
+script = ExtResource("11_7t5mc")
+dialogs = Array[ExtResource("8_o8fc1")]([SubResource("Resource_2lf6f")])
+metadata/_custom_type_script = "uid://cs3md0jmnapvw"
+
+[sub_resource type="Resource" id="Resource_oo54l"]
+script = ExtResource("12_lakw3")
+metadata/_custom_type_script = "uid://d02i4e02ny1ve"
+
+[sub_resource type="Resource" id="Resource_kpybi"]
+script = ExtResource("9_xo05s")
+speaker = SubResource("Resource_oo54l")
+text = "bepis :)"
+metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
+[sub_resource type="Resource" id="Resource_ctatt"]
+script = ExtResource("11_7t5mc")
+dialogs = Array[ExtResource("8_o8fc1")]([SubResource("Resource_kpybi")])
+metadata/_custom_type_script = "uid://cs3md0jmnapvw"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgqkh"]
+size = Vector2(30, 30)
 
 [node name="World" type="Node2D" unique_id=1951058929]
+
+[node name="ClickManager" parent="." unique_id=19665299 instance=ExtResource("1_o8fc1")]
 
 [node name="Test" type="Sprite2D" parent="." unique_id=1670820247]
 position = Vector2(160, 90)
@@ -32,3 +75,39 @@ metadata/_aseprite_wizard_interface_config_ = {
 
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_4wyf3")]
 position = Vector2(210, 120)
+
+[node name="PepsiManager" type="Node" parent="." unique_id=1744909739]
+unique_name_in_owner = true
+script = ExtResource("3_4wyf3")
+_wearing_pepsi_mask = true
+metadata/_custom_type_script = "uid://yu2wywsgdadg"
+
+[node name="DialogManager" type="Node" parent="." unique_id=1000931692]
+unique_name_in_owner = true
+script = ExtResource("4_qfnet")
+metadata/_custom_type_script = "uid://c7py8w66008ws"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1128441290]
+
+[node name="DialogBox" parent="CanvasLayer" unique_id=1946601530 instance=ExtResource("4_k0juu")]
+offset_top = 107.0
+theme = ExtResource("5_71j4m")
+
+[node name="Npc" type="Area2D" parent="." unique_id=1642975929]
+position = Vector2(52, 47)
+script = ExtResource("7_jhx03")
+normal_dialog = SubResource("Resource_7iits")
+pepsi_dialog = SubResource("Resource_ctatt")
+metadata/_custom_type_script = "uid://dix121h46yokc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=1526364999]
+shape = SubResource("RectangleShape2D_xgqkh")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Npc" unique_id=1169561147]
+scale = Vector2(0.23514748, 0.23514748)
+texture = ExtResource("13_pm21f")
+metadata/_edit_lock_ = true
+
+[connection signal="mouse_entered" from="Npc" to="Npc" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Npc" to="Npc" method="_on_mouse_exited"]

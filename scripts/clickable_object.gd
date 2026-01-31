@@ -1,4 +1,4 @@
-extends Area2D
+class_name ClickableObject extends Area2D
 
 signal object_interacted_with(name:String)
 
