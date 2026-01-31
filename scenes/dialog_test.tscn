@@ -5,10 +5,15 @@
 [ext_resource type="Script" uid="uid://37gjw0vakjw1" path="res://scripts/dialog/resources/dialog.gd" id="2_4k4dp"]
 [ext_resource type="Script" uid="uid://b7h5l8uj1r70x" path="res://scripts/dialog/resources/dialog_types/text_dialog.gd" id="3_07oah"]
 [ext_resource type="Script" uid="uid://06trnasd6n0o" path="res://scripts/dialog/resources/condition_types/compare_condition.gd" id="4_07oah"]
+[ext_resource type="Script" uid="uid://bcnu4uoeo8oba" path="res://scripts/dialog/resources/dialog_types/terminator_dialog.gd" id="4_pket2"]
 [ext_resource type="Resource" uid="uid://o051ka38mlni" path="res://assets/dialog/speakers/pepsi_man.tres" id="4_r0p54"]
 [ext_resource type="Script" uid="uid://cs3md0jmnapvw" path="res://scripts/dialog/resources/dialog_sequence.gd" id="5_87qe6"]
 [ext_resource type="Script" uid="uid://d4hkqiahf2p68" path="res://scripts/dialog/resources/dialog_types/assignor_dialog.gd" id="6_r0p54"]
 [ext_resource type="Script" uid="uid://lo6ya4qjdj1x" path="res://scripts/dialog/resources/condition_types/else_condition.gd" id="8_87qe6"]
+
+[sub_resource type="Resource" id="Resource_e4rgx"]
+script = ExtResource("4_pket2")
+metadata/_custom_type_script = "uid://bcnu4uoeo8oba"
 
 [sub_resource type="Resource" id="Resource_07oah"]
 script = ExtResource("4_07oah")
@@ -50,7 +55,7 @@ metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
 
 [sub_resource type="Resource" id="Resource_rpmu6"]
 script = ExtResource("5_87qe6")
-dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_r0p54"), SubResource("Resource_pket2"), SubResource("Resource_87qe6"), SubResource("Resource_4con6")])
+dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_e4rgx"), SubResource("Resource_r0p54"), SubResource("Resource_pket2"), SubResource("Resource_87qe6"), SubResource("Resource_4con6")])
 metadata/_custom_type_script = "uid://cs3md0jmnapvw"
 
 [node name="DialogTest" type="Node2D" unique_id=1908033355]
