@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://beouv1evjqm0s"]
+
+[ext_resource type="Script" uid="uid://bm68g6o5mutmi" path="res://scripts/clickable_object_control.gd" id="1_np4s0"]
+
+[node name="ClickManager" type="Node2D" unique_id=19665299]
+script = ExtResource("1_np4s0")

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://o8fowev74rv6"]
+
+[ext_resource type="Script" uid="uid://dukearv35ahmx" path="res://scripts/clickable_object.gd" id="1_7mdfd"]
+[ext_resource type="Texture2D" uid="uid://dbvi034itsnel" path="res://sprites/test.png" id="2_enrm0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wyf3"]
+resource_local_to_scene = true
+size = Vector2(320, 180)
+
+[node name="Area2D" type="Area2D" unique_id=2081058878 groups=["clickableObject"]]
+editor_description = "make local to edit"
+script = ExtResource("1_7mdfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131110099]
+position = Vector2(150, 80)
+shape = SubResource("RectangleShape2D_4wyf3")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=169392134]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+mouse_filter = 2
+texture = ExtResource("2_enrm0")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
