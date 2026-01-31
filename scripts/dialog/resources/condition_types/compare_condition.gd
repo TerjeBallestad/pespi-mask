@@ -30,6 +30,9 @@ func is_condition_met(manager: DialogManager) -> bool:
 		Operator.NOT_EQUALS:
 			return var_value != value
 			
+		Operator.IS_UNSET_OR_ZERO:
+			return not var_exists or var_value == 0
+			
 		Operator.GREATER_THAN:
 			return var_exists and var_value > value
 			
@@ -54,6 +57,9 @@ enum Operator {
 	
 	## Variable does not exist. Value is unused for this operator
 	IS_UNSET,
+	
+	## Variable does not exist or is zero. Value is unused for this operator
+	IS_UNSET_OR_ZERO,
 	
 	## Variable is equal to value
 	EQUALS,

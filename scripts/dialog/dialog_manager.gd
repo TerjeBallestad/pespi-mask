@@ -14,6 +14,7 @@ var _current_sequence: DialogSequence
 var _playing := false
 var _sequence_index := -1
 
+# TODO: Should not be exported. Need controllable functions for this and a signal upon assignment
 @export
 var variables: Dictionary[String, Variant] = {}
 
@@ -62,19 +63,31 @@ func next_dialog() -> Error:
 	if not playing:
 		return ERR_UNCONFIGURED
 	
-	if current_dialog != null:
+	if current_dialog:
 		exiting_dialog.emit(current_dialog)
 	
-	_sequence_index += 1
-	while current_dialog and current_dialog.condition and not current_dialog.condition.is_condition_met(self):
-		# Skipping dialogs that don't match condition
+	while true:
 		_sequence_index += 1
+		
+		# End of dialog. Stopping
+		if not current_dialog:
+			stop_dialog()
+			return OK
+			
+		# Disabled dialog. Automatic not OK
+		if not current_dialog.enabled:
+			continue
+			
+		# No condition. OK
+		if not current_dialog.condition:
+			break
+			
+		# Condition that is met. OK
+		if current_dialog.condition.is_condition_met(self):
+			break
 	
-	
-	# Dialog sequence exhaused without being redirected
-	if current_dialog == null:
-		stop_dialog()
-		return OK
+		# Otherwise condition isn't met. Not OK
+
 		
 	entering_dialog.emit(current_dialog)
 		

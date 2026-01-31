@@ -1,11 +1,15 @@
 @abstract
 class_name Dialog extends Resource
 
+@export_group("Conditions")
+@export
+var enabled := true
+
 @export
 var condition: DialogCondition
 
-func on_display(box: DialogBox, manager: DialogManager) -> void:
+func on_display(_box: DialogBox, _manager: DialogManager) -> void:
 	pass
 
-func process(delta: float, manager: DialogManager) -> void:
+func process(_delta: float, _manager: DialogManager) -> void:
 	pass

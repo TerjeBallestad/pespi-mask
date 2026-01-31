@@ -7,50 +7,36 @@
 [ext_resource type="Script" uid="uid://06trnasd6n0o" path="res://scripts/dialog/resources/condition_types/compare_condition.gd" id="4_07oah"]
 [ext_resource type="Resource" uid="uid://o051ka38mlni" path="res://assets/dialog/speakers/pepsi_man.tres" id="4_r0p54"]
 [ext_resource type="Script" uid="uid://cs3md0jmnapvw" path="res://scripts/dialog/resources/dialog_sequence.gd" id="5_87qe6"]
-[ext_resource type="Script" uid="uid://dmumkooevhlio" path="res://scripts/dialog/resources/dialog_condition.gd" id="7_87qe6"]
-[ext_resource type="Script" uid="uid://wn7ybhw6p1eq" path="res://scripts/dialog/resources/condition_types/composite_condition.gd" id="8_pket2"]
-
-[sub_resource type="Resource" id="Resource_e4rgx"]
-script = ExtResource("4_07oah")
-value = null
-metadata/_custom_type_script = "uid://06trnasd6n0o"
+[ext_resource type="Script" uid="uid://d4hkqiahf2p68" path="res://scripts/dialog/resources/dialog_types/assignor_dialog.gd" id="6_r0p54"]
 
 [sub_resource type="Resource" id="Resource_pket2"]
 script = ExtResource("3_07oah")
 speaker = ExtResource("4_r0p54")
 text = "Hello, I am mr. bepis. Would you like to minimum taste, maximum sugar?"
-condition = SubResource("Resource_e4rgx")
 metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
+[sub_resource type="Resource" id="Resource_87qe6"]
+script = ExtResource("6_r0p54")
+variable_name = "x"
+value = null
+metadata/_custom_type_script = "uid://d4hkqiahf2p68"
 
 [sub_resource type="Resource" id="Resource_ljip2"]
 script = ExtResource("4_07oah")
-variable_name = "kill_count"
-operator = 5
-value = 4
-metadata/_custom_type_script = "uid://06trnasd6n0o"
-
-[sub_resource type="Resource" id="Resource_87qe6"]
-script = ExtResource("4_07oah")
-variable_name = "kill_count"
-operator = 4
-value = 6
+variable_name = "x"
+value = null
 metadata/_custom_type_script = "uid://06trnasd6n0o"
 
 [sub_resource type="Resource" id="Resource_4con6"]
-script = ExtResource("8_pket2")
-conditions = Array[ExtResource("7_87qe6")]([SubResource("Resource_ljip2"), SubResource("Resource_87qe6")])
-metadata/_custom_type_script = "uid://wn7ybhw6p1eq"
-
-[sub_resource type="Resource" id="Resource_4k4dp"]
 script = ExtResource("3_07oah")
 speaker = ExtResource("4_r0p54")
-text = "b e p i s"
-condition = SubResource("Resource_4con6")
+text = "bepis."
+condition = SubResource("Resource_ljip2")
 metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
 
 [sub_resource type="Resource" id="Resource_rpmu6"]
 script = ExtResource("5_87qe6")
-dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_pket2"), SubResource("Resource_4k4dp")])
+dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_pket2"), SubResource("Resource_87qe6"), SubResource("Resource_4con6")])
 metadata/_custom_type_script = "uid://cs3md0jmnapvw"
 
 [node name="DialogTest" type="Node2D" unique_id=1908033355]
@@ -68,7 +54,4 @@ slide_animation_duration = 0.3
 [node name="DialogManager" type="Node" parent="." unique_id=1679539841]
 unique_name_in_owner = true
 script = ExtResource("1_06prf")
-variables = Dictionary[String, Variant]({
-"kill_count": 4
-})
 current_sequence = SubResource("Resource_rpmu6")
