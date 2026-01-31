@@ -20,5 +20,8 @@ var group_with_above := true
 func on_display(_box: DialogBox, _manager: DialogManager) -> void:
 	pass
 
+func on_hide(_box: DialogBox, _manager: DialogManager) -> void:
+	pass
+
 func process(_delta: float, _manager: DialogManager) -> void:
 	pass

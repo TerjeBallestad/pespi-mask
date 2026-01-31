@@ -27,21 +27,13 @@ var playing: bool:
 	get: 
 		return _playing
 
-# TODO: Exported for test purposes. Should be not be exported nor have a setter
-@export
 var current_sequence: DialogSequence:
 	get:
 		return _current_sequence
-	set(value):
-		_current_sequence = value
-
-# TODO: For testing
-func _ready() -> void:
-	start_dialog(current_sequence)
 
 var current_dialog: Dialog:
 	get:
-		if current_sequence == null or _sequence_index >= len(current_sequence.dialogs):
+		if current_sequence == null or _sequence_index >= len(current_sequence.dialogs) or _sequence_index < 0:
 			return null
 		
 		return current_sequence.dialogs[_sequence_index]
@@ -81,7 +73,6 @@ func next_dialog() -> Error:
 		
 		_sequence_index += 1
 	
-		
 		# End of dialog. Stopping
 		if not current_dialog:
 			stop_dialog()
@@ -126,6 +117,9 @@ func stop_dialog():
 	
 func redirect(seq: DialogSequence):
 	if current_sequence != null:
+		if current_dialog != null:
+			exiting_dialog.emit(current_dialog)
+			
 		exiting_dialog_sequence.emit(current_sequence)
 		redirecting.emit(current_sequence, seq)
 		
