@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 [global_group]
 
 clickableObject="objects you can click on "
+Ground="Character can walk on "
 
 [rendering]
 

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://iyl2b2hg026c"]
 
+[ext_resource type="Script" uid="uid://cektuo56ilaqd" path="res://scripts/movement.gd" id="1_2cm76"]
 [ext_resource type="Texture2D" uid="uid://v65t27wa05v5" path="res://sprites/protagonist.png" id="1_l65vh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8pjh"]
@@ -33,10 +34,15 @@ metadata/_aseprite_wizard_config_ = {
 "group": ""
 }
 
-[node name="Protagonist" type="Node2D" unique_id=1841742184]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijdgc"]
+size = Vector2(21, 81)
+
+[node name="Protagonist" type="CharacterBody2D" unique_id=322512914]
+script = ExtResource("1_2cm76")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759555526]
 texture_filter = 1
+position = Vector2(-1, -44)
 sprite_frames = SubResource("SpriteFrames_2cm76")
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
@@ -59,3 +65,7 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": -1
 }
 metadata/_aseprite_wizard_source_file_hash_ = "5d0c5711373864a41ea68932b7099966"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1885941253]
+position = Vector2(-1.5, -40.5)
+shape = SubResource("RectangleShape2D_ijdgc")
