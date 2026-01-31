@@ -1,4 +1,3 @@
-@tool
 class_name CompareDialogCondition extends DialogCondition
 
 @export
@@ -48,16 +47,29 @@ func is_condition_met(manager: DialogManager) -> bool:
 			
 		_:
 			return false # How did we get here?
-	
-	
 
 enum Operator {
+	## Variable exists. Value is unused for this operator
 	IS_SET,
+	
+	## Variable does not exist. Value is unused for this operator
 	IS_UNSET,
+	
+	## Variable is equal to value
 	EQUALS,
+	
+	## Variable is different from value
 	NOT_EQUALS,
+	
+	## Variable is less than value
 	LESS_THAN,
+	
+	## Variable is greater than value
 	GREATER_THAN,
+	
+	## Variable is less than or equal to value
 	LESS_THAN_OR_EQUAL,
+	
+	## Variable is greater than or equal to value
 	GREATER_THAN_OR_EQUAL
 }
