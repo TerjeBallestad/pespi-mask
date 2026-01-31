@@ -18,6 +18,10 @@ config/name="Pespi Mask"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+clickableObject="objects you can click on "
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
