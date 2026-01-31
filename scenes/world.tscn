@@ -1,3 +1,13 @@
 [gd_scene format=3 uid="uid://b3get38rrj6lt"]
 
+[ext_resource type="Texture2D" uid="uid://dbvi034itsnel" path="res://sprites/test.png" id="1_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_4wyf3"]
+
 [node name="World" type="Node2D" unique_id=1951058929]
+
+[node name="Test" type="Sprite2D" parent="." unique_id=1670820247]
+position = Vector2(252, 296)
+texture = ExtResource("1_rwgxs")
+
+[node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_4wyf3")]
+position = Vector2(292, 321)
