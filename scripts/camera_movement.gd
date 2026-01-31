@@ -1,7 +1,7 @@
 extends Camera2D
 
-@export var speed := 0.1
-@export var target: Node2D
+#@export var speed := 0.1
+#@export var target: Node2D
 @export var background: Sprite2D
 
 func _ready() -> void:

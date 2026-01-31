@@ -10,7 +10,6 @@ func _input(event: InputEvent) -> void:
 func set_target_position():
 	var ground: Polygon2D = get_tree().get_first_node_in_group("Ground")
 	var poly := ground.polygon
-	print(poly)
 	if Geometry2D.is_point_in_polygon(ground.to_local(get_global_mouse_position()),poly):
 		target = get_global_mouse_position()
 		
