@@ -3,13 +3,19 @@ extends Node2D
 
 var hoveredElement = null
 var selectedElement = null
+var Selections:= []
 
 func unsetHoveredNode(node):
 	if self.hoveredElement == node:
 		self.hoveredElement = null
+	Selections.erase(node)
+	if Selections.is_empty():
+		return
+	self.hoveredElement = Selections[-1]
 
 # Returns boolean if it is the new top hovered object
 func setHoveredNode(node1):
+	Selections.append(node1)
 	if self.hoveredElement == null or self.hoveredElement == node1:
 		self.hoveredElement = node1
 		return true
