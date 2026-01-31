@@ -1,6 +1,9 @@
 @abstract
 class_name Dialog extends Resource
 
+@export
+var condition: DialogCondition
+
 func on_display(box: DialogBox, manager: DialogManager) -> void:
 	pass
 

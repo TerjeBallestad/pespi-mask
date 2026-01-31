@@ -14,6 +14,9 @@ var _current_sequence: DialogSequence
 var _playing := false
 var _sequence_index := -1
 
+@export
+var variables: Dictionary[String, Variant] = {}
+
 var playing: bool:
 	get: 
 		return _playing
@@ -63,6 +66,10 @@ func next_dialog() -> Error:
 		exiting_dialog.emit(current_dialog)
 	
 	_sequence_index += 1
+	while current_dialog and current_dialog.condition and not current_dialog.condition.is_condition_met(self):
+		# Skipping dialogs that don't match condition
+		_sequence_index += 1
+	
 	
 	# Dialog sequence exhaused without being redirected
 	if current_dialog == null:

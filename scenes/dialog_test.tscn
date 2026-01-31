@@ -4,13 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://70mqawldnge" path="res://scenes/dialog_box.tscn" id="1_f4v0s"]
 [ext_resource type="Script" uid="uid://37gjw0vakjw1" path="res://scripts/dialog/resources/dialog.gd" id="2_4k4dp"]
 [ext_resource type="Script" uid="uid://b7h5l8uj1r70x" path="res://scripts/dialog/resources/dialog_types/text_dialog.gd" id="3_07oah"]
+[ext_resource type="Script" uid="uid://06trnasd6n0o" path="res://scripts/dialog/resources/condition_types/compare_condition.gd" id="4_07oah"]
 [ext_resource type="Resource" uid="uid://o051ka38mlni" path="res://assets/dialog/speakers/pepsi_man.tres" id="4_r0p54"]
 [ext_resource type="Script" uid="uid://cs3md0jmnapvw" path="res://scripts/dialog/resources/dialog_sequence.gd" id="5_87qe6"]
+
+[sub_resource type="Resource" id="Resource_r0p54"]
+script = ExtResource("4_07oah")
+variable_name = "your_mom"
+value = null
+metadata/_custom_type_script = "uid://06trnasd6n0o"
 
 [sub_resource type="Resource" id="Resource_pket2"]
 script = ExtResource("3_07oah")
 speaker = ExtResource("4_r0p54")
 text = "Hello, I am mr. bepis. Would you like to minimum taste, maximum sugar?"
+condition = SubResource("Resource_r0p54")
 metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
 
 [sub_resource type="Resource" id="Resource_4k4dp"]
@@ -28,10 +36,7 @@ metadata/_custom_type_script = "uid://cs3md0jmnapvw"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1076451925]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=2035163553]
-root_node = NodePath("../..")
-
-[node name="DialogBox" parent="CanvasLayer/AnimationPlayer" unique_id=1946601530 instance=ExtResource("1_f4v0s")]
+[node name="DialogBox" parent="CanvasLayer" unique_id=1946601530 instance=ExtResource("1_f4v0s")]
 anchors_preset = 12
 anchor_top = 1.0
 offset_top = -172.0
