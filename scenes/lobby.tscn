@@ -15,10 +15,10 @@ texture = ExtResource("1_o1atq")
 position = Vector2(-16, 18)
 
 [node name="Retiree" parent="." unique_id=908568966 instance=ExtResource("3_pc087")]
-position = Vector2(-159, 19)
+position = Vector2(-206, 100)
 
 [node name="Influencer" parent="." unique_id=1481530276 instance=ExtResource("4_apkv3")]
-position = Vector2(-223, 66)
+position = Vector2(-149, 6)
 
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("5_pc087")]
 position = Vector2(173, 54)
