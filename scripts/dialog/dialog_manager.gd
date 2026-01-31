@@ -66,7 +66,13 @@ func next_dialog() -> Error:
 	if current_dialog:
 		exiting_dialog.emit(current_dialog)
 	
+	var loop_count := 0
 	while true:
+		loop_count += 1
+		if loop_count > 100:
+			print("LOOP BROKEN") # HACK: This shouldn't need to be here but I am paranoid
+			break
+			
 		_sequence_index += 1
 		
 		# End of dialog. Stopping

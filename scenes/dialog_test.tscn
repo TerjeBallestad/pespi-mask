@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://o051ka38mlni" path="res://assets/dialog/speakers/pepsi_man.tres" id="4_r0p54"]
 [ext_resource type="Script" uid="uid://cs3md0jmnapvw" path="res://scripts/dialog/resources/dialog_sequence.gd" id="5_87qe6"]
 [ext_resource type="Script" uid="uid://d4hkqiahf2p68" path="res://scripts/dialog/resources/dialog_types/assignor_dialog.gd" id="6_r0p54"]
+[ext_resource type="Script" uid="uid://b7t134yeapyyx" path="res://scripts/dialog/resources/dialog_types/redirector_dialog.gd" id="8_pket2"]
+[ext_resource type="Resource" uid="uid://cfgikcke2r1tb" path="res://assets/dialog/sequences/abc.tres" id="9_rpmu6"]
 
 [sub_resource type="Resource" id="Resource_pket2"]
 script = ExtResource("3_07oah")
@@ -34,9 +36,14 @@ text = "bepis."
 condition = SubResource("Resource_ljip2")
 metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
 
+[sub_resource type="Resource" id="Resource_e4rgx"]
+script = ExtResource("8_pket2")
+sequence = ExtResource("9_rpmu6")
+metadata/_custom_type_script = "uid://b7t134yeapyyx"
+
 [sub_resource type="Resource" id="Resource_rpmu6"]
 script = ExtResource("5_87qe6")
-dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_pket2"), SubResource("Resource_87qe6"), SubResource("Resource_4con6")])
+dialogs = Array[ExtResource("2_4k4dp")]([SubResource("Resource_pket2"), SubResource("Resource_87qe6"), SubResource("Resource_4con6"), SubResource("Resource_e4rgx")])
 metadata/_custom_type_script = "uid://cs3md0jmnapvw"
 
 [node name="DialogTest" type="Node2D" unique_id=1908033355]
