@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogSpeaker" format=3 uid="uid://o051ka38mlni"]
+
+[ext_resource type="Script" uid="uid://d02i4e02ny1ve" path="res://scripts/dialog/resources/dialog_speaker.gd" id="1_etoks"]
+
+[resource]
+script = ExtResource("1_etoks")
+name = "mr. bepis"
+metadata/_custom_type_script = "uid://d02i4e02ny1ve"

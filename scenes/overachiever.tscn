@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dtbesobclkmyj"]
+
+[ext_resource type="Texture2D" uid="uid://2i2x8nr53s7k" path="res://sprites/overachiever.png" id="1_g6roa"]
+
+[node name="Overachiever" type="Node2D" unique_id=845319300]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1367926435]
+position = Vector2(-5, -38)
+texture = ExtResource("1_g6roa")

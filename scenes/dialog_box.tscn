@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://70mqawldnge"]
+
+[ext_resource type="Script" uid="uid://ucplogok47cu" path="res://scripts/dialog/dialog_box.gd" id="1_xvd2c"]
+[ext_resource type="Script" uid="uid://bd56j34j4easx" path="res://scripts/crawling_text.gd" id="2_tihiy"]
+
+[node name="DialogBox" type="Panel" unique_id=1946601530 node_paths=PackedStringArray("speaker_label", "text_label", "options_buttons")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xvd2c")
+slide_animation_duration = 0.3
+speaker_label = NodePath("GridContainer/Speaker")
+text_label = NodePath("GridContainer/PanelContainer/Text")
+options_buttons = [NodePath("GridContainer/HBoxContainer/Option1"), NodePath("GridContainer/HBoxContainer/Option2"), NodePath("GridContainer/HBoxContainer/Option3")]
+
+[node name="GridContainer" type="VBoxContainer" parent="." unique_id=1050912718]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speaker" type="RichTextLabel" parent="GridContainer" unique_id=1573718923]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Speaker"
+fit_content = true
+scroll_active = false
+
+[node name="PanelContainer" type="MarginContainer" parent="GridContainer" unique_id=91693805]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="RichTextLabel" parent="GridContainer/PanelContainer" unique_id=2032033549]
+layout_mode = 2
+text = "Dialog text 
+spanning multiple lines 
+
+yo"
+fit_content = true
+scroll_active = false
+script = ExtResource("2_tihiy")
+letters_per_second = 50.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GridContainer" unique_id=1980235488]
+layout_mode = 2
+
+[node name="Option1" type="Button" parent="GridContainer/HBoxContainer" unique_id=1928644473]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option 1"
+
+[node name="Option2" type="Button" parent="GridContainer/HBoxContainer" unique_id=1556168996]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option 2"
+
+[node name="Option3" type="Button" parent="GridContainer/HBoxContainer" unique_id=1597467935]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option 3"
