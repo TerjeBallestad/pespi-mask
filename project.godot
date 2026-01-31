@@ -19,11 +19,30 @@ run/main_scene="uid://b3get38rrj6lt"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+
 [global_group]
 
 clickableObject="objects you can click on "
 
+[aseprite_importers]
+
+aseprite_executable_path="/Users/godstemning/Library/Application Support/Steam/steamapps/common/Aseprite/Aseprite.app"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

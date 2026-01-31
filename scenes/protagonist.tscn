@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://iyl2b2hg026c"]
+
+[ext_resource type="Texture2D" uid="uid://v65t27wa05v5" path="res://sprites/protagonist.png" id="1_l65vh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8pjh"]
+atlas = ExtResource("1_l65vh")
+region = Rect2(0, 0, 32, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cm76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8pjh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+metadata/_aseprite_wizard_source_file_hash_ = "5d0c5711373864a41ea68932b7099966"
+metadata/_aseprite_wizard_config_ = {
+"fields": {
+"do_not_create_resource": false,
+"import_date": "2026-01-31 16:53:37",
+"layer_exclusion_pattern": "background",
+"only_visible_layers": true,
+"output_location": "res://sprites",
+"output_name": "",
+"scale": "1.0",
+"should_round_fps": true,
+"source_file": "/Users/godstemning/Documents/pespi-mask/protagonist.aseprite",
+"split_layers": false
+},
+"group": ""
+}
+
+[node name="Protagonist" type="Node2D" unique_id=1841742184]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759555526]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_2cm76")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://sprites/protagonist.aseprite",
+"source_uid": -1
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5d0c5711373864a41ea68932b7099966"
