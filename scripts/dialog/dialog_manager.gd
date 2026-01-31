@@ -131,4 +131,5 @@ func redirect(seq: DialogSequence):
 		
 	_current_sequence = seq
 	_sequence_index = -1
+	_previous_node_condition_result = true
 	entering_dialog_sequence.emit(seq)
