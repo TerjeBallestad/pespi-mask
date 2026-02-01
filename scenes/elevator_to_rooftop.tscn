@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://daffgnu7b6hdg"]
+
+[ext_resource type="PackedScene" uid="uid://fgd2lltnrghj" path="res://scenes/elevator_base.tscn" id="1_et477"]
+[ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="2_1j5eh"]
+
+[node name="Elevator" type="Node2D" unique_id=1208638044]
+
+[node name="ElevatorBase" parent="." unique_id=114725241 instance=ExtResource("1_et477")]
+
+[node name="ExitToLobby" parent="." unique_id=1353387834 instance=ExtResource("2_1j5eh")]
+position = Vector2(-15, 23)
+target_scene = "res://scenes/lobby.tscn"
