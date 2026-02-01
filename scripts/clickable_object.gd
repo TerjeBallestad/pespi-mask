@@ -14,8 +14,10 @@ func leftMouseClick():
 		ClickableObjectControl.queue(self)
 
 func _on_mouse_entered() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	ClickableObjectControl.setHoveredNode(self)
 
 func _on_mouse_exited() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	ClickableObjectControl.unsetHoveredNode(self)
 	
