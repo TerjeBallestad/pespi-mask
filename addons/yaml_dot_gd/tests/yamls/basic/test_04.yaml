@@ -1,4 +1,0 @@
-config:
-  title: Game Settings
-  values: [1, 2, 3]
-  enabled: true
