@@ -7,6 +7,7 @@ var normal_dialog: DialogSequence
 var pepsi_dialog: DialogSequence
 
 func _ready() -> void:
+	super._ready()
 	object_interacted_with.connect(_on_interacted)
 
 func _on_interacted(_name: String) -> void:
@@ -15,4 +16,4 @@ func _on_interacted(_name: String) -> void:
 	if GameState.is_wearing_pepsi_mask():
 		seq = pepsi_dialog
 		
-	%DialogManager.start_dialog(seq)
+	DialogManager.start_dialog(seq)

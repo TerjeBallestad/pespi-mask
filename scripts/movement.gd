@@ -12,18 +12,21 @@ var move_callback: Callable
 ## Whether currently walking to an exit point
 var is_walking_to_exit: bool = false
 
-
 func _input(event: InputEvent) -> void:
+	if DialogManager.playing:
+		return
+	
 	if event is InputEventMouseButton && event.pressed:
 		# Cancel walk-to-exit if player clicks elsewhere
 		if is_walking_to_exit:
 			is_walking_to_exit = false
 			move_callback = Callable()
-			movement_canceled.emit()
-		set_target_position()
+			
+		movement_canceled.emit()
+		set_target_position_from_mouse()
 
 
-func set_target_position():
+func set_target_position_from_mouse():
 	var ground: Polygon2D = get_tree().get_first_node_in_group("Ground")
 	var poly := ground.polygon
 	if Geometry2D.is_point_in_polygon(ground.to_local(get_global_mouse_position()),poly):
@@ -33,6 +36,10 @@ func set_target_position():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	target = position
+	
+	ClickableObjectControl.interaction_queued.connect(func(obj: ClickableObject):
+		target = obj.global_position + Vector2(0, 15)
+	)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,7 +59,9 @@ func _physics_process(delta: float) -> void:
 			var callback := move_callback
 			move_callback = Callable()
 			callback.call()
-			movement_finished.emit()
+			
+		movement_finished.emit()	
+		ClickableObjectControl.dequeue()
 
 
 func walk_to_exit(exit_pos: Vector2, callback: Callable) -> void:
