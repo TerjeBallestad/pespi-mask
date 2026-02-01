@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://xjix3silc14f"]
+
+[ext_resource type="Texture2D" uid="uid://b6o7w33htbe3p" path="res://sprites/elevator.png" id="1_8o2wm"]
+[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_gisge"]
+[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="3_pr5mj"]
+[ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="4_xslfi"]
+
+[node name="Elevator" type="Node2D" unique_id=1208638044]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2308832]
+texture = ExtResource("1_8o2wm")
+
+[node name="Protagonist" parent="." unique_id=322512914 instance=ExtResource("2_gisge")]
+position = Vector2(-15, 74)
+
+[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=796144336 node_paths=PackedStringArray("background")]
+script = ExtResource("3_pr5mj")
+background = NodePath("../../Sprite2D")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=2039802708]
+position = Vector2(-15, 74)
+
+[node name="Ground" type="Polygon2D" parent="." unique_id=326454456 groups=["Ground"]]
+position = Vector2(1, 9)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-69, 44, -88, 79, 51, 79, 36, 45)
+
+[node name="ExitToHallway" parent="." unique_id=1353387834 instance=ExtResource("4_xslfi")]
+position = Vector2(-15, 23)
+target_scene = "res://scenes/hallway.tscn"

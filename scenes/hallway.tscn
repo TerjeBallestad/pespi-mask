@@ -26,7 +26,7 @@ polygon = PackedVector2Array(-101, 11, -175, 124, 220, 120, 146, 15)
 
 [node name="ExitToLobby" parent="." unique_id=1799764257 instance=ExtResource("3_exit")]
 position = Vector2(10, -15)
-target_scene = "res://scenes/lobby.tscn"
+target_scene = "res://scenes/elevator_to_lobby.tscn"
 
 [node name="ExitToVictom" parent="." unique_id=731543484 instance=ExtResource("3_exit")]
 position = Vector2(-139, 39)
