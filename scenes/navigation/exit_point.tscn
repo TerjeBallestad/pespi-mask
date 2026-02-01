@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxtexit01point"]
+
+[ext_resource type="Script" uid="uid://exitpoint01script" path="res://scripts/navigation/exit_point.gd" id="1_exit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exit1"]
+size = Vector2(30, 60)
+
+[node name="ExitPoint" type="Area2D"]
+input_pickable = true
+script = ExtResource("1_exit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_exit1")
+
+[node name="WalkTarget" type="Marker2D" parent="."]
+position = Vector2(0, 30)
