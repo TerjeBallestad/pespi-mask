@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dg62ebwma3ebk"]
+
+[ext_resource type="Texture2D" uid="uid://diqv3l68slsaa" path="res://sprites/hall.png" id="1_owcqv"]
+
+[node name="Hallway" type="Node2D" unique_id=681593649]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=62199661]
+texture = ExtResource("1_owcqv")
