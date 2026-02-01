@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2game_ui_scene"]
+[gd_scene load_steps=5 format=3 uid="uid://b2game_ui_scene"]
 
 [ext_resource type="Script" uid="uid://cv2q2y1bhlw27" path="res://scripts/dialog/dialog_manager.gd" id="1_dialog_mgr"]
 [ext_resource type="Script" uid="uid://bsn46idjykpf" path="res://scripts/pepsi_manager.gd" id="2_pepsi_mgr"]
 [ext_resource type="PackedScene" uid="uid://70mqawldnge" path="res://scenes/ui/dialog_box.tscn" id="3_dialog_box"]
+[ext_resource type="PackedScene" uid="uid://bmask_toggle_scene" path="res://scenes/ui/mask_toggle.tscn" id="4_mask_toggle"]
 
 [node name="GameUI" type="CanvasLayer"]
 layer = 100
@@ -19,3 +20,5 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -60.0
 grow_vertical = 0
+
+[node name="MaskToggle" parent="." instance=ExtResource("4_mask_toggle")]
