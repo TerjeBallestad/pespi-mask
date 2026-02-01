@@ -5,12 +5,22 @@ var clues: Dictionary = {}
 var flags: Dictionary = {}
 var dialog_history: Dictionary = {}
 var _wearing_pepsi_mask := false
+var _has_pepsi_mask := false
 
 signal putting_on_mask
 signal removing_mask
+signal obtaining_mask
 
 func is_wearing_pepsi_mask() -> bool:
 	return _wearing_pepsi_mask
+	
+func has_pepsi_mask() -> bool:
+	return _has_pepsi_mask
+	
+func obtain_pepsi_mask():
+	if not has_pepsi_mask():
+		_has_pepsi_mask = true
+		obtaining_mask.emit()
 	
 func put_on_mask():
 	if is_wearing_pepsi_mask():
