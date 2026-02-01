@@ -9,4 +9,4 @@
 
 [node name="ExitToLobby" parent="." unique_id=1353387834 instance=ExtResource("2_1j5eh")]
 position = Vector2(-15, 23)
-target_scene = "res://scenes/lobby.tscn"
+target_scene = "res://scenes/roof.tscn"

@@ -2,17 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://fgd2lltnrghj" path="res://scenes/elevator_base.tscn" id="3_3m8g7"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="4_c0nxn"]
-[ext_resource type="AudioStream" uid="uid://e163mka1t6jr" path="res://audio/music/GGJ26 - Music - Distorted Muzak - Loop.ogg" id="5_l77j0"]
 
 [node name="Elevator" type="Node2D" unique_id=1208638044]
 
 [node name="ExitToLobby" parent="." unique_id=1353387834 instance=ExtResource("4_c0nxn")]
 position = Vector2(-15, 23)
 target_scene = "res://scenes/lobby.tscn"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=744022343]
-stream = ExtResource("5_l77j0")
-autoplay = true
-bus = &"Music"
 
 [node name="ElevatorBase" parent="." unique_id=971386404 instance=ExtResource("3_3m8g7")]
