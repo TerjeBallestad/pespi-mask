@@ -40,6 +40,11 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 clickableObject="objects you can click on "
 Ground="Character can walk on "
 
+[autoload]
+
+GameState="*res://scripts/autoload/game_state.gd"
+SceneTransition="*res://scenes/autoload/scene_transition.tscn"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
