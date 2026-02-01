@@ -7,27 +7,39 @@ var target: Vector2
 @export var speed = 400
 @export var min_distance_to_target:float = 10
 
-## Callback to execute when walk-to-exit completes
 var move_callback: Callable
-## Whether currently walking to an exit point
 var is_walking_to_exit: bool = false
 
 func _input(event: InputEvent) -> void:
+	# Block input during dialog
 	if DialogManager.playing:
 		return
-	
+
+	# Block during scene transitions
+	if SceneTransition.transitioning:
+		return
+
 	if event is InputEventMouseButton && event.pressed:
+		# Don't process movement if clicking on a clickable object (NPC, item, etc.)
+		var click_mgr = get_tree().current_scene.get_node_or_null("ClickManager")
+		if click_mgr and click_mgr.hoveredElement != null:
+			return
+
 		# Cancel walk-to-exit if player clicks elsewhere
 		if is_walking_to_exit:
 			is_walking_to_exit = false
 			move_callback = Callable()
-			
+
 		movement_canceled.emit()
 		set_target_position_from_mouse()
 
 
 func set_target_position_from_mouse():
 	var ground: Polygon2D = get_tree().get_first_node_in_group("Ground")
+	if ground == null:
+		# No ground polygon defined - allow free movement
+		target = get_global_mouse_position()
+		return
 	var poly := ground.polygon
 	if Geometry2D.is_point_in_polygon(ground.to_local(get_global_mouse_position()),poly):
 		target = get_global_mouse_position()
@@ -36,7 +48,7 @@ func set_target_position_from_mouse():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	target = position
-	
+
 	ClickableObjectControl.interaction_queued.connect(func(obj: ClickableObject):
 		target = obj.global_position + Vector2(0, 15)
 	)
@@ -60,8 +72,8 @@ func _physics_process(delta: float) -> void:
 			var callback := move_callback
 			move_callback = Callable()
 			callback.call()
-			
-		movement_finished.emit()	
+
+		movement_finished.emit()
 		ClickableObjectControl.dequeue()
 
 

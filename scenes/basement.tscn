@@ -4,6 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_etyrx"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
 [ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_ui.tscn" id="5_gameui"]
+[ext_resource type="Script" uid="uid://xewqc3lf0pbn" path="res://scripts/basement_mask.gd" id="6_mask"]
+[ext_resource type="PackedScene" uid="uid://beouv1evjqm0s" path="res://scenes/click_manager.tscn" id="7_clickmgr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mask1"]
+size = Vector2(32, 32)
 
 [node name="Basement" type="Node2D" unique_id=782234505]
 
@@ -13,17 +19,44 @@ texture = ExtResource("1_wvfle")
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_etyrx")]
 position = Vector2(45, 89)
 
-[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=676397091 node_paths=PackedStringArray("background")]
+[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=172117983 node_paths=PackedStringArray("background")]
 script = ExtResource("4_cam")
 background = NodePath("../../Sprite2D")
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1355054298]
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1246350022]
 position = Vector2(45, 89)
 
-[node name="Ground" type="Polygon2D" parent="." unique_id=875306884 groups=["Ground"]]
+[node name="Ground" type="Polygon2D" parent="." unique_id=1383944389 groups=["Ground"]]
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-200, 60, -200, 140, 200, 140, 200, 60)
 
-[node name="ExitToHallway" parent="." unique_id=1799794208 instance=ExtResource("3_exit")]
-position = Vector2(-190, 53)
-target_scene = "res://scenes/lobby.tscn"
+[node name="ExitToHallway" parent="." unique_id=1584207457 instance=ExtResource("3_exit")]
+position = Vector2(-191, 51)
+target_scene = "res://scenes/hallway.tscn"
+
+[node name="PepsiMask" type="Area2D" parent="." unique_id=636890123]
+position = Vector2(-100, 80)
+script = ExtResource("6_mask")
+
+[node name="Sprite2D" type="Sprite2D" parent="PepsiMask" unique_id=171369921]
+modulate = Color(0.2, 0.4, 0.8, 1)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PepsiMask" unique_id=141530446]
+shape = SubResource("RectangleShape2D_mask1")
+
+[node name="PlaceholderLabel" type="Label" parent="PepsiMask" unique_id=410865976]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 8.0
+text = "MASK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickManager" parent="." unique_id=416435696 instance=ExtResource("7_clickmgr")]
+
+[node name="GameUI" parent="." unique_id=1307862289 instance=ExtResource("5_gameui")]
+
+[connection signal="mouse_entered" from="PepsiMask" to="PepsiMask" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PepsiMask" to="PepsiMask" method="_on_mouse_exited"]

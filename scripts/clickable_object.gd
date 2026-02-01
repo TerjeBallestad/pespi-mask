@@ -2,6 +2,7 @@ class_name ClickableObject extends Area2D
 
 signal object_interacted_with(name:String)
 
+
 func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
@@ -17,5 +18,5 @@ func _on_mouse_entered() -> void:
 	ClickableObjectControl.setHoveredNode(self)
 
 func _on_mouse_exited() -> void:
+
 	ClickableObjectControl.unsetHoveredNode(self)
-	

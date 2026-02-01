@@ -1,4 +1,5 @@
 extends Node
+signal flag_changed(flag_name: String, value: Variant)
 
 var current_act: int = 1
 var clues: Dictionary = {}
@@ -38,6 +39,7 @@ func collect_clue(clue_id: String) -> void:
 
 func set_flag(flag_id: String, value: bool = true) -> void:
 	flags[flag_id] = value
+	flag_changed.emit(flag_id, value)
 
 
 func get_flag(flag_id: String) -> bool:

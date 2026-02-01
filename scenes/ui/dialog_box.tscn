@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bd56j34j4easx" path="res://scripts/crawling_text.gd" id="2_tihiy"]
 [ext_resource type="Resource" uid="uid://cf3k506ati1i6" path="res://audio/sound_resources/UIClick_Positive.tres" id="3_xovei"]
 
-[node name="DialogBox" type="Panel" unique_id=1946601530 node_paths=PackedStringArray("speaker_label", "text_label", "options_buttons")]
+[node name="DialogBox" type="Panel" unique_id=1946601530 node_paths=PackedStringArray("speaker_label", "portrait_rect", "text_label", "options_buttons")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,7 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xvd2c")
 slide_animation_duration = 0.3
-speaker_label = NodePath("GridContainer/Speaker")
+speaker_label = NodePath("GridContainer/HeaderContainer/Speaker")
+portrait_rect = NodePath("GridContainer/HeaderContainer/Portrait")
 text_label = NodePath("GridContainer/PanelContainer/Text")
 options_buttons = [NodePath("GridContainer/HBoxContainer/Option1"), NodePath("GridContainer/HBoxContainer/Option2"), NodePath("GridContainer/HBoxContainer/Option3")]
 sfx_ui_hover = ExtResource("2_rm1mb")
@@ -27,9 +28,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Speaker" type="RichTextLabel" parent="GridContainer" unique_id=1573718923]
+[node name="HeaderContainer" type="HBoxContainer" parent="GridContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+
+[node name="Portrait" type="TextureRect" parent="GridContainer/HeaderContainer"]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Speaker" type="RichTextLabel" parent="GridContainer/HeaderContainer" unique_id=1573718923]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 text = "Speaker"
 fit_content = true
 scroll_active = false
@@ -40,8 +53,8 @@ size_flags_vertical = 3
 
 [node name="Text" type="RichTextLabel" parent="GridContainer/PanelContainer" unique_id=2032033549]
 layout_mode = 2
-text = "Dialog text 
-spanning multiple lines 
+text = "Dialog text
+spanning multiple lines
 
 yo"
 fit_content = true
