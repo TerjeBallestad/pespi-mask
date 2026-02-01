@@ -1,0 +1,9 @@
+{
+	"speaker" : "Brother",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Yeah, yeah, it was me ok."},
+		{"text" : "Are you happy with yourself?"},
+		{"text" : "Step on up to the edge. See what happens."}
+	]
+}

@@ -1,0 +1,9 @@
+{
+	"speaker" : "Kodak",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Sorry lad, no more candy in these pockets."},
+		{"text" : "No matter how deep they may be."},
+		{"text" : "Sorry!"}
+	]
+}

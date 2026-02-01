@@ -1,0 +1,8 @@
+{
+	"speaker" : "Gerd",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Robert? Me?"},
+		{"text" : "I didn't even know his name a second ago."}
+	]
+}

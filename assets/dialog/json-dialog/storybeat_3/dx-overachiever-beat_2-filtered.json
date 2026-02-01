@@ -1,0 +1,11 @@
+{
+	"speaker" : "Brother",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Maybe I should make a game about a murder mystery?"},
+		{"text" : "With references to my favorite brand of drink?"},
+		{"text" : "..."},
+		{"text" : "Nah..."},
+		{"text" : "That'd be dumb."}
+	]
+}

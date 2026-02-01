@@ -1,0 +1,13 @@
+{
+	"speaker" : "Kodak",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "I didn't like the guy, but I wouldn't kill him!"},
+		{"text" : "What do you take me for?"},
+		{"text" : "..."},
+		{"text" : "..."},
+		{"text" : "In in my younger years, sure."},
+		{"text" : "..."},
+		{"text" : "But I'm too old for that now."}
+	]
+}

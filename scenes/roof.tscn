@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://d2btbhs2jjmyt"]
+
+[ext_resource type="Texture2D" uid="uid://d4ediwie1bx2t" path="res://sprites/rooftop.png" id="1_quj0b"]
+[ext_resource type="Script" uid="uid://dix121h46yokc" path="res://scripts/npc.gd" id="2_gkyok"]
+[ext_resource type="PackedScene" uid="uid://dtbesobclkmyj" path="res://scenes/objects/npcs/overachiever.tscn" id="3_v41dc"]
+[ext_resource type="PackedScene" uid="uid://cvafxmihkjc45" path="res://scenes/objects/npcs/retiree.tscn" id="4_vhueb"]
+[ext_resource type="PackedScene" uid="uid://6w75cc8gomib" path="res://scenes/objects/npcs/influencer.tscn" id="5_f2n6m"]
+[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="6_18ch0"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="7_r0crw"]
+[ext_resource type="AudioStream" uid="uid://bl8ue8baeawci" path="res://audio/music/GGJ26 - Music - Muzak.ogg" id="9_xrsjr"]
+[ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="10_f3adr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07nfq"]
+size = Vector2(24, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oipnb"]
+size = Vector2(26, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yad6j"]
+size = Vector2(28, 82)
+
+[node name="Lobby" type="Node2D" unique_id=1364067709]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2074024614]
+texture = ExtResource("1_quj0b")
+
+[node name="Npc" type="Area2D" parent="." unique_id=1358927776]
+position = Vector2(-8, -19)
+script = ExtResource("2_gkyok")
+normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_3/dx-overachiever-beat_2-filtered.json"
+pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_3/dx-overachiever-beat_2-unfiltered.json"
+metadata/_custom_type_script = "uid://dix121h46yokc"
+
+[node name="Overachiever" parent="Npc" unique_id=845319300 instance=ExtResource("3_v41dc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=1912933863]
+position = Vector2(-2, -35.5)
+shape = SubResource("RectangleShape2D_07nfq")
+
+[node name="Npc2" type="Area2D" parent="." unique_id=659302877]
+position = Vector2(-153, 26)
+script = ExtResource("2_gkyok")
+normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_3/dx-retiree-beat_2-filtered.json"
+pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_3/dx-retiree-beat_2-unfiltered.json"
+metadata/_custom_type_script = "uid://dix121h46yokc"
+
+[node name="Retiree" parent="Npc2" unique_id=908568966 instance=ExtResource("4_vhueb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2" unique_id=2126887004]
+position = Vector2(-1, -37.5)
+shape = SubResource("RectangleShape2D_oipnb")
+
+[node name="InfluencerNPC" type="Area2D" parent="." unique_id=1063762653 groups=["clickableObject"]]
+position = Vector2(-74, -3)
+script = ExtResource("2_gkyok")
+normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_3/dx-influencer-beat_2-filtered.json"
+pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_3/dx-influencer-beat_2-unfiltered.json"
+metadata/_custom_type_script = "uid://dix121h46yokc"
+
+[node name="Influencer" parent="InfluencerNPC" unique_id=1481530276 instance=ExtResource("5_f2n6m")]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InfluencerNPC" unique_id=2087646287]
+position = Vector2(-4, -31)
+shape = SubResource("RectangleShape2D_yad6j")
+metadata/_edit_lock_ = true
+
+[node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("6_18ch0")]
+position = Vector2(173, 54)
+
+[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=1139970043 node_paths=PackedStringArray("background")]
+script = ExtResource("7_r0crw")
+background = NodePath("../../Sprite2D")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1712603666]
+position = Vector2(173, 54)
+
+[node name="Ground" type="Polygon2D" parent="." unique_id=765097105 groups=["Ground"]]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-202, 7, -267, 34, -360, 126, 361, 125, 210, -1, -104, -11)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=347338808]
+stream = ExtResource("9_xrsjr")
+autoplay = true
+bus = &"Music"
+
+[node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("10_f3adr")]

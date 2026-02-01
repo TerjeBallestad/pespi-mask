@@ -1,0 +1,7 @@
+{
+	"speaker" : "Gerd",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Hiiii there! Just needed some air!"}
+	]
+}
