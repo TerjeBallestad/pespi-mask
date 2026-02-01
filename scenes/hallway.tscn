@@ -47,15 +47,15 @@ target_scene = "res://scenes/victim-apartment.tscn"
 [node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("5_1k2v8")]
 
 [node name="Npc2" type="Area2D" parent="." unique_id=1096983450]
-position = Vector2(150, 98)
+position = Vector2(-89, -16)
 script = ExtResource("7_nlnob")
 normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_1/dx-retiree-beat_1-filtered.json"
 pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-retiree-beat_2-unfiltered.json"
 metadata/_custom_type_script = "uid://dix121h46yokc"
 
 [node name="Retiree" parent="Npc2" unique_id=908568966 instance=ExtResource("8_w57m6")]
-position = Vector2(-244, -69)
+position = Vector2(-1, 58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2" unique_id=877113921]
-position = Vector2(-242, -106)
+position = Vector2(-1, 18)
 shape = SubResource("RectangleShape2D_drbwl")
