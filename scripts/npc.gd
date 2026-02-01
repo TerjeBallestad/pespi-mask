@@ -1,11 +1,11 @@
 class_name Npc extends ClickableObject
 
-## Path to filtered dialog YAML (shown without mask)
-@export_file("*.yaml")
+## Path to filtered dialog JSON (shown without mask)
+@export_file("*.json")
 var filtered_dialog_path: String
 
-## Path to unfiltered dialog YAML (shown with mask)
-@export_file("*.yaml")
+## Path to unfiltered dialog JSON (shown with mask)
+@export_file("*.json")
 var unfiltered_dialog_path: String
 
 ## Fallback: pre-assigned dialog resources (for backward compatibility)
@@ -23,6 +23,9 @@ var _cached_filtered: DialogSequence
 var _cached_unfiltered: DialogSequence
 
 func _ready() -> void:
+	# Enable mouse detection
+	input_pickable = true
+
 	object_interacted_with.connect(_on_interacted)
 	# Pre-cache dialogs if paths are set
 	if filtered_dialog_path != "":
@@ -51,7 +54,8 @@ func _start_dialog() -> void:
 		push_warning("NPC %s has no dialog for current mask state" % name)
 		return
 
-	%DialogManager.start_dialog(seq)
+	var dialog_mgr = get_tree().current_scene.get_node("GameUI/DialogManager")
+	dialog_mgr.start_dialog(seq)
 
 # Visual hover feedback
 func _on_mouse_entered() -> void:

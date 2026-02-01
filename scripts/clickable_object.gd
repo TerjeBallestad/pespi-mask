@@ -3,20 +3,24 @@ class_name ClickableObject extends Area2D
 signal object_interacted_with(name:String)
 
 func get_clickable_manager():
-	return get_tree().root.get_child(0).find_child("ClickManager",false)
+	return get_tree().current_scene.get_node_or_null("ClickManager")
 
 func leftMouseClick():
 	# Block clicks during dialog
-	if has_node("%DialogManager") and %DialogManager.playing:
+	var dialog_mgr = get_tree().current_scene.get_node_or_null("GameUI/DialogManager")
+	if dialog_mgr and dialog_mgr.playing:
 		return
 
 	get_clickable_manager().selectedElement = self
 	object_interacted_with.emit(name)
 
 func _on_mouse_entered() -> void:
-	get_clickable_manager().setHoveredNode(self)
-
+	var manager = get_clickable_manager()
+	if manager:
+		manager.setHoveredNode(self)
 
 
 func _on_mouse_exited() -> void:
-	get_clickable_manager().unsetHoveredNode(self)
+	var manager = get_clickable_manager()
+	if manager:
+		manager.unsetHoveredNode(self)

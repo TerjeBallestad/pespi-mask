@@ -7,15 +7,14 @@ var target: Vector2
 @export var speed = 400
 @export var min_distance_to_target:float = 10
 
-## Callback to execute when walk-to-exit completes
 var move_callback: Callable
-## Whether currently walking to an exit point
 var is_walking_to_exit: bool = false
 
 
 func _input(event: InputEvent) -> void:
-		# Block input during dialog
-	if has_node("%DialogManager") and %DialogManager.playing:
+	# Block input during dialog
+	var dialog_mgr = get_tree().current_scene.get_node_or_null("GameUI/DialogManager")
+	if dialog_mgr and dialog_mgr.playing:
 		return
 
 	# Block during scene transitions
@@ -23,6 +22,11 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton && event.pressed:
+		# Don't process movement if clicking on a clickable object (NPC, item, etc.)
+		var click_mgr = get_tree().current_scene.get_node_or_null("ClickManager")
+		if click_mgr and click_mgr.hoveredElement != null:
+			return
+
 		# Cancel walk-to-exit if player clicks elsewhere
 		if is_walking_to_exit:
 			is_walking_to_exit = false
@@ -33,6 +37,10 @@ func _input(event: InputEvent) -> void:
 
 func set_target_position():
 	var ground: Polygon2D = get_tree().get_first_node_in_group("Ground")
+	if ground == null:
+		# No ground polygon defined - allow free movement
+		target = get_global_mouse_position()
+		return
 	var poly := ground.polygon
 	if Geometry2D.is_point_in_polygon(ground.to_local(get_global_mouse_position()),poly):
 		target = get_global_mouse_position()

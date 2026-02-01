@@ -1,8 +1,14 @@
 extends TextureButton
 
+## Called when scene is ready
 func _ready() -> void:
+	# Ensure toggle mode is enabled
 	toggle_mode = true
+
+	# Hide until mask is acquired
 	visible = GameState.get_flag("has_mask")
+
+	# Connect to toggle
 	toggled.connect(_on_toggled)
 
 	# Listen for mask acquisition

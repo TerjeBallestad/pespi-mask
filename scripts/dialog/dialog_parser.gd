@@ -13,10 +13,15 @@ static func parse_dialog_file(path: String) -> DialogSequence:
 
 
 static func parse_dialog_string(content: String, source_path: String = "") -> DialogSequence:
-	var parser = YAMLParser.new()
-	var data = parser.parse(content)
+	var json = JSON.new()
+	var error = json.parse(content)
+	if error != OK:
+		push_error("DialogParser: Failed to parse JSON from: " + source_path + " - " + json.get_error_message())
+		return null
+
+	var data = json.data
 	if data == null or not data is Dictionary:
-		push_error("DialogParser: Failed to parse YAML from: " + source_path)
+		push_error("DialogParser: Invalid JSON structure in: " + source_path)
 		return null
 
 	return _build_sequence(data, source_path)
@@ -42,7 +47,7 @@ static func _build_sequence(data: Dictionary, source_path: String) -> DialogSequ
 	for entry in entries:
 		var dialog = TextDialog.new()
 		dialog.speaker = speaker
-		dialog.text = entry.get("text", "")
+		dialog.text = entry.get("text", "") if entry is Dictionary else str(entry)
 		sequence.dialogs.append(dialog)
 
 	return sequence

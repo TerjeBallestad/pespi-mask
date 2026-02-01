@@ -8,8 +8,8 @@ size = Vector2(32, 80)
 
 [node name="Influencer" type="Area2D" unique_id=1481530276]
 script = ExtResource("2_npc")
-filtered_dialog_path = "res://characters/influencer/dialog_filtered.yaml"
-unfiltered_dialog_path = "res://characters/influencer/dialog_unfiltered.yaml"
+filtered_dialog_path = "res://characters/influencer/dialog_filtered.json"
+unfiltered_dialog_path = "res://characters/influencer/dialog_unfiltered.json"
 talk_offset = Vector2(40, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=159383220]

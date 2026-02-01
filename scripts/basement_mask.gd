@@ -11,6 +11,9 @@ var take_dialog: DialogSequence
 var _examined := false
 
 func _ready() -> void:
+	# Enable mouse detection
+	input_pickable = true
+
 	object_interacted_with.connect(_on_interacted)
 
 	# Hide if mask already taken
@@ -22,7 +25,7 @@ func _on_interacted(_name: String) -> void:
 		# First click: examine
 		_examined = true
 		if examine_dialog:
-			%DialogManager.start_dialog(examine_dialog)
+			get_tree().current_scene.get_node("GameUI/DialogManager").start_dialog(examine_dialog)
 		else:
 			_show_examine_text()
 	else:
@@ -45,7 +48,7 @@ func _show_examine_text() -> void:
 	take_dialog_entry.text = "Click again to take it."
 	seq.dialogs.append(take_dialog_entry)
 
-	%DialogManager.start_dialog(seq)
+	get_tree().current_scene.get_node("GameUI/DialogManager").start_dialog(seq)
 
 func _take_mask() -> void:
 	GameState.set_flag("has_mask", true)
@@ -58,10 +61,10 @@ func _take_mask() -> void:
 	dialog.speaker = speaker
 	dialog.text = "You take the Pepsi Mask. Something about it feels... authentic."
 	seq.dialogs.append(dialog)
-	%DialogManager.start_dialog(seq)
+	get_tree().current_scene.get_node("GameUI/DialogManager").start_dialog(seq)
 
 	# Remove mask from scene after dialog
-	%DialogManager.exiting_dialog_playback.connect(_on_dialog_finished, CONNECT_ONE_SHOT)
+	get_tree().current_scene.get_node("GameUI/DialogManager").exiting_dialog_playback.connect(_on_dialog_finished, CONNECT_ONE_SHOT)
 
 func _on_dialog_finished() -> void:
 	queue_free()

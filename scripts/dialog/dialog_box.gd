@@ -5,6 +5,9 @@ signal choice_made(box: DialogBox, manager: DialogManager, choice_index: int)
 @onready
 var _original_y := position.y
 
+## Reference to DialogManager - found as sibling node
+var dialog_manager: DialogManager
+
 @export
 var slide_animation_duration := 1.0
 
@@ -22,30 +25,33 @@ var text_label: CrawlingText
 var options_buttons: Array[Button]
 
 func _ready():
-	%DialogManager.entering_dialog_playback.connect(_on_entering_dialog_playback)
-	%DialogManager.entering_dialog.connect(_on_entering_dialog)
-	%DialogManager.exiting_dialog.connect(_on_exiting_dialog)
-	%DialogManager.exiting_dialog_playback.connect(_on_exiting_dialog_playback)
+	# DialogManager is a sibling node in game_ui.tscn
+	dialog_manager = get_parent().get_node("DialogManager")
+
+	dialog_manager.entering_dialog_playback.connect(_on_entering_dialog_playback)
+	dialog_manager.entering_dialog.connect(_on_entering_dialog)
+	dialog_manager.exiting_dialog.connect(_on_exiting_dialog)
+	dialog_manager.exiting_dialog_playback.connect(_on_exiting_dialog_playback)
 
 	for i in len(options_buttons):
 		options_buttons[i].button_up.connect(func():
-			choice_made.emit(self, %DialogManager, i)
+			choice_made.emit(self, dialog_manager, i)
 		)
 
 	position.y = _original_y + size.y
 
 func _process(delta: float):
-	if %DialogManager.playing:
-		%DialogManager.current_dialog.process(delta, %DialogManager)
+	if dialog_manager.playing:
+		dialog_manager.current_dialog.process(delta, dialog_manager)
 
 func _on_entering_dialog_playback():
 	slide_in()
 
 func _on_entering_dialog(dialog: Dialog):
-	dialog.on_display(self, %DialogManager)
+	dialog.on_display(self, dialog_manager)
 
 func _on_exiting_dialog(dialog: Dialog):
-	dialog.on_hide(self, %DialogManager)
+	dialog.on_hide(self, dialog_manager)
 
 func _on_exiting_dialog_playback():
 	slide_out()
