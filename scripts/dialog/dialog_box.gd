@@ -34,8 +34,11 @@ func _ready():
 		options_buttons[i].button_up.connect(func():
 			choice_made.emit(self, i)
 		)
+		
+		options_buttons[i].mouse_entered.connect(_on_option_mouse_entered)
 	
 	position.y = _original_y + size.y
+	choice_made.connect(_on_option_button_down)
 
 func _process(delta: float):
 	if DialogManager.playing:
@@ -62,6 +65,5 @@ func slide_out():
 func _on_option_mouse_entered() -> void:
 	AudioManager.play_sound(sfx_ui_hover)
 
-
-func _on_option_button_down() -> void:
+func _on_option_button_down(_box: DialogBox, _choice_index: int) -> void:
 	AudioManager.play_sound(sfx_ui_click)
