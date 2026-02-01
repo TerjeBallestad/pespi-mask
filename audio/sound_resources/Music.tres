@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="Music_Track" format=3 uid="uid://c6rg7rot4aodo"]
+
+[ext_resource type="Script" uid="uid://db3676v5lb0k8" path="res://scripts/audio/music_track.gd" id="1_3sfs8"]
+[ext_resource type="AudioStream" uid="uid://bl8ue8baeawci" path="res://audio/music/GGJ26 - Music - Muzak.ogg" id="2_8g358"]
+[ext_resource type="AudioStream" uid="uid://d0imjjkwy0t5" path="res://audio/music/GGJ26 - Music - Distorted Muzak.ogg" id="3_2p550"]
+[ext_resource type="AudioStream" uid="uid://daq25mi0ym13n" path="res://audio/music/GGJ26 - Music - Reality.ogg" id="4_5uqv8"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3sfs8"]
+clip_count = 3
+clip_0/name = &"muzak"
+clip_0/stream = ExtResource("2_8g358")
+clip_0/auto_advance = 0
+clip_1/name = &"elevator_muzak"
+clip_1/stream = ExtResource("3_2p550")
+clip_1/auto_advance = 0
+clip_2/name = &"real"
+clip_2/stream = ExtResource("4_5uqv8")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(0, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 1
+},
+Vector2i(1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(1, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 0): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[resource]
+script = ExtResource("1_3sfs8")
+waveforms = SubResource("AudioStreamInteractive_3sfs8")
+volume = -12.0
+bus = 1
+metadata/_custom_type_script = "uid://db3676v5lb0k8"

@@ -26,6 +26,7 @@ func _ready() -> void:
 	# Enable mouse detection
 	input_pickable = true
 
+	super._ready()
 	object_interacted_with.connect(_on_interacted)
 	# Pre-cache dialogs if paths are set
 	if filtered_dialog_path != "":
@@ -53,6 +54,8 @@ func _start_dialog() -> void:
 	if seq == null:
 		push_warning("NPC %s has no dialog for current mask state" % name)
 		return
+
+	DialogManager.start_dialog(seq)
 
 	var dialog_mgr = get_tree().current_scene.get_node("GameUI/DialogManager")
 	dialog_mgr.start_dialog(seq)

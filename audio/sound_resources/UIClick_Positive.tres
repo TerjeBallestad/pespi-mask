@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://cf3k506ati1i6"]
+
+[ext_resource type="Script" uid="uid://cky8p4co0vusq" path="res://scripts/audio/sound.gd" id="1_nrbyp"]
+[ext_resource type="AudioStream" uid="uid://2hy60ql8t2ll" path="res://audio/sfx/UIClick_Clean Positive_NS_GGJ26.ogg" id="2_hjayg"]
+
+[resource]
+script = ExtResource("1_nrbyp")
+waveform = ExtResource("2_hjayg")
+volume = -12.0
+bus = 3
+metadata/_custom_type_script = "uid://cky8p4co0vusq"

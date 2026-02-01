@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="DialogSequence" format=3 uid="uid://b0fayrs1r7kwc"]
+
+[ext_resource type="Script" uid="uid://37gjw0vakjw1" path="res://scripts/dialog/resources/dialog.gd" id="1_uwo8m"]
+[ext_resource type="Script" uid="uid://cs3md0jmnapvw" path="res://scripts/dialog/resources/dialog_sequence.gd" id="2_fcd04"]
+[ext_resource type="Script" uid="uid://b7h5l8uj1r70x" path="res://scripts/dialog/resources/dialog_types/text_dialog.gd" id="2_hqxks"]
+[ext_resource type="Resource" uid="uid://cs3fqhdhud0ay" path="res://assets/dialog/speakers/influencer_speaker.tres" id="3_88j46"]
+[ext_resource type="Script" uid="uid://kmxq24muu12r" path="res://scripts/dialog/resources/dialog_option.gd" id="4_deygf"]
+[ext_resource type="Script" uid="uid://batlbawr5yaer" path="res://scripts/dialog/resources/dialog_types/choice_dialog.gd" id="5_gpu2o"]
+
+[sub_resource type="Resource" id="Resource_texyo"]
+script = ExtResource("2_hqxks")
+speaker = ExtResource("3_88j46")
+text = "Heeeey!"
+metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
+[sub_resource type="Resource" id="Resource_15scc"]
+script = ExtResource("2_hqxks")
+speaker = ExtResource("3_88j46")
+text = "I knew you would agree :)"
+metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
+[sub_resource type="Resource" id="Resource_vheap"]
+script = ExtResource("4_deygf")
+text = "Yeah, sure"
+dialog = SubResource("Resource_15scc")
+metadata/_custom_type_script = "uid://kmxq24muu12r"
+
+[sub_resource type="Resource" id="Resource_r4w5m"]
+script = ExtResource("2_hqxks")
+speaker = ExtResource("3_88j46")
+text = "Haha! You're weird!"
+metadata/_custom_type_script = "uid://b7h5l8uj1r70x"
+
+[sub_resource type="Resource" id="Resource_t2bqg"]
+script = ExtResource("4_deygf")
+text = "Excuse me? What?"
+dialog = SubResource("Resource_r4w5m")
+metadata/_custom_type_script = "uid://kmxq24muu12r"
+
+[sub_resource type="Resource" id="Resource_mo3a6"]
+script = ExtResource("5_gpu2o")
+choices = Array[ExtResource("4_deygf")]([SubResource("Resource_vheap"), SubResource("Resource_t2bqg")])
+text = "This lobby is so cool, right?"
+metadata/_custom_type_script = "uid://batlbawr5yaer"
+
+[resource]
+script = ExtResource("2_fcd04")
+dialogs = Array[ExtResource("1_uwo8m")]([SubResource("Resource_texyo"), SubResource("Resource_mo3a6")])
+metadata/_custom_type_script = "uid://cs3md0jmnapvw"

@@ -9,12 +9,12 @@ var operator: Operator
 @export
 var value: Variant
 
-func is_condition_met(manager: DialogManager) -> bool:
-	var var_exists := manager.variables.has(variable_name)
+func is_condition_met() -> bool:
+	var var_exists := DialogManager.variables.has(variable_name)
 	var var_value = null
 	
 	if var_exists:
-		var_value = manager.variables[variable_name]
+		var_value = DialogManager.variables[variable_name]
 	
 	# Some of these are unsafe. Just don't be an idiotia maxima in the editor pls
 	match operator:

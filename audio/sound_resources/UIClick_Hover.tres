@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://cxgwuhkim72bd"]
+
+[ext_resource type="Script" uid="uid://cky8p4co0vusq" path="res://scripts/audio/sound.gd" id="1_s7dua"]
+[ext_resource type="AudioStream" uid="uid://pe0ovg2rvqc2" path="res://audio/sfx/UIClick_Clean Hover_NS_GGJ26.ogg" id="2_l5epr"]
+
+[resource]
+script = ExtResource("1_s7dua")
+waveform = ExtResource("2_l5epr")
+volume = -12.0
+bus = 3
+metadata/_custom_type_script = "uid://cky8p4co0vusq"

@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://70mqawldnge"]
 
 [ext_resource type="Script" uid="uid://ucplogok47cu" path="res://scripts/dialog/dialog_box.gd" id="1_xvd2c"]
+[ext_resource type="Resource" uid="uid://cxgwuhkim72bd" path="res://audio/sound_resources/UIClick_Hover.tres" id="2_rm1mb"]
 [ext_resource type="Script" uid="uid://bd56j34j4easx" path="res://scripts/crawling_text.gd" id="2_tihiy"]
+[ext_resource type="Resource" uid="uid://cf3k506ati1i6" path="res://audio/sound_resources/UIClick_Positive.tres" id="3_xovei"]
 
 [node name="DialogBox" type="Panel" unique_id=1946601530 node_paths=PackedStringArray("speaker_label", "portrait_rect", "text_label", "options_buttons")]
 anchors_preset = 15
@@ -15,6 +17,8 @@ speaker_label = NodePath("GridContainer/HeaderContainer/Speaker")
 portrait_rect = NodePath("GridContainer/HeaderContainer/Portrait")
 text_label = NodePath("GridContainer/PanelContainer/Text")
 options_buttons = [NodePath("GridContainer/HBoxContainer/Option1"), NodePath("GridContainer/HBoxContainer/Option2"), NodePath("GridContainer/HBoxContainer/Option3")]
+sfx_ui_hover = ExtResource("2_rm1mb")
+sfx_ui_click = ExtResource("3_xovei")
 
 [node name="GridContainer" type="VBoxContainer" parent="." unique_id=1050912718]
 layout_mode = 1

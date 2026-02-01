@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bx58ny4jhjafe"]
 
-[ext_resource type="Script" uid="uid://c7py8w66008ws" path="res://scripts/dialog/dialog_manager.gd" id="1_06prf"]
 [ext_resource type="Script" uid="uid://dd0hyyjxvcu5q" path="res://scripts/dialog/debug_start_dialog.gd" id="1_87qe6"]
 [ext_resource type="PackedScene" uid="uid://70mqawldnge" path="res://scenes/ui/dialog_box.tscn" id="1_f4v0s"]
 [ext_resource type="Script" uid="uid://37gjw0vakjw1" path="res://scripts/dialog/resources/dialog.gd" id="2_4k4dp"]
@@ -65,7 +64,3 @@ offset_top = -74.0
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0, 1)
 theme = ExtResource("9_pket2")
-
-[node name="DialogManager" type="Node" parent="." unique_id=1679539841]
-unique_name_in_owner = true
-script = ExtResource("1_06prf")

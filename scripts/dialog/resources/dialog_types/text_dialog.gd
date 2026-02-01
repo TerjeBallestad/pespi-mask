@@ -9,13 +9,13 @@ var speaker: DialogSpeaker
 @export
 var text: String
 
-func on_display(box: DialogBox, manager: DialogManager) -> void:
+func on_display(box: DialogBox) -> void:
 	var spkr := speaker
 
 	if not speaker:
-		spkr = manager.last_speaker
+		spkr = DialogManager.last_speaker
 
-	manager.last_speaker = spkr
+	DialogManager.last_speaker = spkr
 
 	box.speaker_label.text = spkr.name
 
@@ -35,12 +35,12 @@ func on_display(box: DialogBox, manager: DialogManager) -> void:
 	box.options_buttons[0].text = "Next"
 	box.choice_made.connect(_on_click_next)
 
-func on_hide(box: DialogBox, _manager: DialogManager) -> void:
+func on_hide(box: DialogBox) -> void:
 	if not show_button:
 		return
 
 	box.options_buttons[0].visible = false
 	box.choice_made.disconnect(_on_click_next)
 
-func _on_click_next(_box: DialogBox, manager: DialogManager, _choice_index: int):
-	manager.next_dialog()
+func _on_click_next(_box: DialogBox, _choice_index: int):
+	DialogManager.next_dialog()

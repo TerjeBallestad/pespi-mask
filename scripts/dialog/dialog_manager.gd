@@ -1,4 +1,4 @@
-class_name DialogManager extends Node
+extends Node
 
 signal entering_dialog_playback
 signal entering_dialog_sequence(sequence: DialogSequence)
@@ -83,7 +83,7 @@ func next_dialog() -> Error:
 			
 		# Important to do this here, before returning for disabled nodes. 
 		# Because we don't want a node's disabledness to affect nodes below it
-		var condition_result := not current_dialog.condition or current_dialog.condition.is_condition_met(self)
+		var condition_result := not current_dialog.condition or current_dialog.condition.is_condition_met()
 		if current_dialog.group_with_above:
 			condition_result = condition_result and previous_node_condition_result
 			

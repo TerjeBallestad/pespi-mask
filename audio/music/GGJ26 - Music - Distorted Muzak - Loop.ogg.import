@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://e163mka1t6jr"
+path="res://.godot/imported/GGJ26 - Music - Distorted Muzak - Loop.ogg-a64169e3d4626ddc6e7869fe7b442aae.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/music/GGJ26 - Music - Distorted Muzak - Loop.ogg"
+dest_files=["res://.godot/imported/GGJ26 - Music - Distorted Muzak - Loop.ogg-a64169e3d4626ddc6e7869fe7b442aae.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

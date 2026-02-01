@@ -1,5 +1,6 @@
 extends Node2D
 
+signal interaction_queued(interactable: ClickableObject)
 
 var hoveredElement = null
 var selectedElement = null
@@ -43,6 +44,20 @@ func setHoveredNode(node1):
 	else:
 		return false
 
+func queue(object: ClickableObject):
+	if selectedElement:
+		return # Don't want to stack. TODO: Or do we want the player to be able to interrupt?
+	
+	selectedElement = object
+	interaction_queued.emit(object)
+	
+func dequeue():
+	if not selectedElement:
+		return
+		
+	selectedElement.interact()
+	selectedElement = null
+	
 func _input(event):
 	if event is InputEventMouseButton && event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
