@@ -44,6 +44,7 @@ Ground="Character can walk on "
 
 GameState="*res://scripts/autoload/game_state.gd"
 SceneTransition="*res://scenes/autoload/scene_transition.tscn"
+PepsiManager="*res://scripts/pepsi_manager.gd"
 
 [rendering]
 

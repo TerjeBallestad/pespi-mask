@@ -1,9 +1,13 @@
-[gd_scene format=3 uid="uid://qlmpkcvm4uwu"]
+[gd_scene load_steps=7 format=3 uid="uid://qlmpkcvm4uwu"]
 
 [ext_resource type="Texture2D" uid="uid://l7nocxxj8u0m" path="res://sprites/basement.png" id="1_wvfle"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_etyrx"]
-[ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
+[ext_resource type="PackedScene" uid="uid://bxtexit01point" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
 [ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="PackedScene" uid="uid://b2game_ui_scene" path="res://scenes/ui/game_ui.tscn" id="5_gameui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsmt1"]
+size = Vector2(30, 60)
 
 [node name="Basement" type="Node2D" unique_id=782234505]
 
@@ -13,17 +17,25 @@ texture = ExtResource("1_wvfle")
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_etyrx")]
 position = Vector2(45, 89)
 
-[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=676397091 node_paths=PackedStringArray("background")]
+[node name="Camera2D" type="Camera2D" parent="Protagonist" node_paths=PackedStringArray("background")]
 script = ExtResource("4_cam")
 background = NodePath("../../Sprite2D")
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1355054298]
+[node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(45, 89)
 
-[node name="Ground" type="Polygon2D" parent="." unique_id=875306884 groups=["Ground"]]
+[node name="Ground" type="Polygon2D" parent="." groups=["Ground"]]
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-200, 60, -200, 140, 200, 140, 200, 60)
 
-[node name="ExitToHallway" parent="." unique_id=1799794208 instance=ExtResource("3_exit")]
-position = Vector2(-190, 53)
-target_scene = "res://scenes/lobby.tscn"
+[node name="ExitToHallway" parent="." instance=ExtResource("3_exit")]
+position = Vector2(180, 80)
+target_scene = "res://scenes/hallway.tscn"
+
+[node name="CollisionShape2D" parent="ExitToHallway" index="0"]
+shape = SubResource("RectangleShape2D_bsmt1")
+
+[node name="WalkTarget" parent="ExitToHallway" index="1"]
+position = Vector2(-30, 30)
+
+[node name="GameUI" parent="." instance=ExtResource("5_gameui")]

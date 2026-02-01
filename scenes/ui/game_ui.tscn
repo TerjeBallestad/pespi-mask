@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2game_ui_scene"]
+
+[ext_resource type="Script" uid="uid://cv2q2y1bhlw27" path="res://scripts/dialog/dialog_manager.gd" id="1_dialog_mgr"]
+[ext_resource type="Script" uid="uid://bsn46idjykpf" path="res://scripts/pepsi_manager.gd" id="2_pepsi_mgr"]
+[ext_resource type="PackedScene" uid="uid://70mqawldnge" path="res://scenes/ui/dialog_box.tscn" id="3_dialog_box"]
+
+[node name="GameUI" type="CanvasLayer"]
+layer = 100
+
+[node name="DialogManager" type="Node" parent="." unique_name_in_owner=true]
+script = ExtResource("1_dialog_mgr")
+
+[node name="PepsiManager" type="Node" parent="." unique_name_in_owner=true]
+script = ExtResource("2_pepsi_mgr")
+
+[node name="DialogBox" parent="." instance=ExtResource("3_dialog_box")]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+grow_vertical = 0
