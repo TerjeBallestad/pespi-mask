@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://qlmpkcvm4uwu"]
+[gd_scene load_steps=8 format=3 uid="uid://qlmpkcvm4uwu"]
 
 [ext_resource type="Texture2D" uid="uid://l7nocxxj8u0m" path="res://sprites/basement.png" id="1_wvfle"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_etyrx"]
 [ext_resource type="PackedScene" uid="uid://bxtexit01point" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
 [ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
 [ext_resource type="PackedScene" uid="uid://b2game_ui_scene" path="res://scenes/ui/game_ui.tscn" id="5_gameui"]
+[ext_resource type="Script" path="res://scripts/basement_mask.gd" id="6_mask"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsmt1"]
 size = Vector2(30, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mask1"]
+size = Vector2(32, 32)
 
 [node name="Basement" type="Node2D" unique_id=782234505]
 
@@ -38,4 +42,27 @@ shape = SubResource("RectangleShape2D_bsmt1")
 [node name="WalkTarget" parent="ExitToHallway" index="1"]
 position = Vector2(-30, 30)
 
+[node name="PepsiMask" type="Area2D" parent="."]
+position = Vector2(-100, 80)
+script = ExtResource("6_mask")
+
+[node name="Sprite2D" type="Sprite2D" parent="PepsiMask"]
+modulate = Color(0.2, 0.4, 0.8, 1)
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PepsiMask"]
+shape = SubResource("RectangleShape2D_mask1")
+
+[node name="PlaceholderLabel" type="Label" parent="PepsiMask"]
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = 8.0
+text = "MASK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GameUI" parent="." instance=ExtResource("5_gameui")]
+
+[connection signal="mouse_entered" from="PepsiMask" to="PepsiMask" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PepsiMask" to="PepsiMask" method="_on_mouse_exited"]
