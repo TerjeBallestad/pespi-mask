@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://diu2o3dyybcon"
+path="res://.godot/imported/DOORMisc_Locked 3_NS_GGJ26.ogg-dedfc4bfd9d2ba931218f5d3f442f7de.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/DOORMisc_Locked 3_NS_GGJ26.ogg"
+dest_files=["res://.godot/imported/DOORMisc_Locked 3_NS_GGJ26.ogg-dedfc4bfd9d2ba931218f5d3f442f7de.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

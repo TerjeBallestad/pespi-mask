@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bopoddb0a2lpb"]
+
+[ext_resource type="Script" uid="uid://dnldt4tkihfcw" path="res://audio/test_scenes/audio_test_scene.gd" id="1_n4wx4"]
+[ext_resource type="Resource" uid="uid://c6rg7rot4aodo" path="res://audio/sound_resources/Music.tres" id="2_oo5ly"]
+[ext_resource type="Resource" uid="uid://cxgwuhkim72bd" path="res://audio/sound_resources/UIClick_Hover.tres" id="2_qudjk"]
+[ext_resource type="Resource" uid="uid://cf3k506ati1i6" path="res://audio/sound_resources/UIClick_Positive.tres" id="3_0g2ng"]
+
+[node name="AudioTestScene" type="Control" unique_id=2057869559]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n4wx4")
+music = ExtResource("2_oo5ly")
+soundUIHover = ExtResource("2_qudjk")
+soundUIClick = ExtResource("3_0g2ng")
+
+[node name="Panel" type="Panel" parent="." unique_id=602253111]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Panel" unique_id=761289218]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 46.0
+offset_right = 199.0
+offset_bottom = 77.0
+action_mode = 0
+text = "Start Music"
+
+[node name="btn_muzak" type="Button" parent="Panel" unique_id=332443076]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 94.0
+offset_right = 84.0
+offset_bottom = 125.0
+text = "Muzak"
+
+[node name="btn_dist" type="Button" parent="Panel" unique_id=920596654]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 94.0
+offset_right = 174.0
+offset_bottom = 125.0
+text = "Dist"
+
+[node name="btn_real" type="Button" parent="Panel" unique_id=857704232]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 95.0
+offset_right = 277.0
+offset_bottom = 126.0
+text = "Real"
+
+[connection signal="button_down" from="Panel/Button" to="." method="_on_button_button_down"]
+[connection signal="focus_entered" from="Panel/Button" to="." method="_on_button_focus_entered"]
+[connection signal="mouse_entered" from="Panel/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="button_down" from="Panel/btn_muzak" to="." method="_on_btn_muzak_button_down"]
+[connection signal="button_down" from="Panel/btn_dist" to="." method="_on_btn_dist_button_down"]
+[connection signal="button_down" from="Panel/btn_real" to="." method="_on_btn_real_button_down"]

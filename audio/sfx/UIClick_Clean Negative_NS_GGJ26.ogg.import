@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5k01swavkw6b"
+path="res://.godot/imported/UIClick_Clean Negative_NS_GGJ26.ogg-513ade5c0d1b06efca9d13af4a71dcfd.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/UIClick_Clean Negative_NS_GGJ26.ogg"
+dest_files=["res://.godot/imported/UIClick_Clean Negative_NS_GGJ26.ogg-513ade5c0d1b06efca9d13af4a71dcfd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

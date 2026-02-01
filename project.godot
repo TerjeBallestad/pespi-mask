@@ -23,6 +23,17 @@ config/icon="res://icon.svg"
 
 aseprite_executable_path="/Users/godstemning/Library/Application Support/Steam/steamapps/common/Aseprite/Aseprite.app"
 
+[audio]
+
+buses/default_bus_layout="uid://ciju2l5u2b8eo"
+
+[autoload]
+
+AudioManager="*uid://cj2yj5esphl0j"
+MusicManager="*uid://0eukiuygtb8d"
+GameState="*res://scripts/autoload/game_state.gd"
+SceneTransition="*res://scenes/autoload/scene_transition.tscn"
+
 [display]
 
 window/size/viewport_width=320
@@ -39,11 +50,6 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 clickableObject="objects you can click on "
 Ground="Character can walk on "
-
-[autoload]
-
-GameState="*res://scripts/autoload/game_state.gd"
-SceneTransition="*res://scenes/autoload/scene_transition.tscn"
 
 [rendering]
 

@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dbvi034itsnel" path="res://sprites/test.png" id="1_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_4wyf3"]
-[ext_resource type="PackedScene" uid="uid://6w75cc8gomib" path="res://scenes/influencer.tscn" id="3_4wyf3"]
-[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="3_qfnet"]
-[ext_resource type="PackedScene" uid="uid://dtbesobclkmyj" path="res://scenes/overachiever.tscn" id="4_k0juu"]
-[ext_resource type="PackedScene" uid="uid://cvafxmihkjc45" path="res://scenes/retiree.tscn" id="5_71j4m"]
-[ext_resource type="PackedScene" uid="uid://chxbyp78tria" path="res://scenes/ground_example.tscn" id="7_i7141"]
+[ext_resource type="PackedScene" path="res://scenes/influencer.tscn" id="3_4wyf3"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="3_qfnet"]
+[ext_resource type="PackedScene" path="res://scenes/overachiever.tscn" id="4_k0juu"]
+[ext_resource type="PackedScene" path="res://scenes/retiree.tscn" id="5_71j4m"]
+[ext_resource type="PackedScene" path="res://scenes/ground_example.tscn" id="7_i7141"]
 
 [node name="World" type="Node2D" unique_id=1951058929]
 
