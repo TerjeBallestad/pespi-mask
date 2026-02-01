@@ -12,8 +12,8 @@ func _ready() -> void:
 
 func _on_interacted(_name: String) -> void:
 	var seq_path := normal_dialog_path
-	
+
 	if GameState.is_wearing_pepsi_mask():
 		seq_path = pepsi_dialog_path
-		
+
 	DialogManager.start_dialog(DialogParser.parse_dialog_file(seq_path))

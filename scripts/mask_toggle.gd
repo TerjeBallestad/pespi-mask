@@ -13,13 +13,13 @@ func _ready() -> void:
 
 	# Listen for mask acquisition
 	GameState.obtaining_mask.connect(_on_obtain_mask)
-	
+
 	# Listen for dialog
 	DialogManager.entering_dialog_playback.connect(_on_entering_dialog_playback)
 	DialogManager.exiting_dialog_playback.connect(_on_obtain_mask)
 
 	_update_visual()
-	_on_obtain_mask() 
+	_on_obtain_mask()
 	# To load default visibility
 
 func _on_entering_dialog_playback():
@@ -28,7 +28,7 @@ func _on_entering_dialog_playback():
 func _on_obtain_mask() -> void:
 	visible = GameState.has_pepsi_mask()
 	button_pressed = GameState.is_wearing_pepsi_mask()
-		
+
 
 func _on_toggled(is_pressed: bool) -> void:
 	# Block toggle during dialog
@@ -41,12 +41,12 @@ func _on_toggled(is_pressed: bool) -> void:
 		GameState.put_on_mask()
 	else:
 		GameState.remove_mask()
-		
+
 	_update_visual()
 
 func _update_visual() -> void:
 	# Visual feedback for mask state
 	if GameState.is_wearing_pepsi_mask():
-		modulate = Color(0.5, 1.0, 0.5)  # Green tint when wearing
+		modulate = Color(0.8, 0.8, 0.8)  # Green tint when wearing
 	else:
 		modulate = Color.WHITE
