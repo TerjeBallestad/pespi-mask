@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://6w75cc8gomib" path="res://scenes/objects/npcs/influencer.tscn" id="4_apkv3"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="5_pc087"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="6_exit"]
-[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="7_cam"]
+[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="7_cam"]
 [ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="10_oipnb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07nfq"]
@@ -77,11 +77,11 @@ position = Vector2(173, 54)
 
 [node name="Ground" type="Polygon2D" parent="." unique_id=765097105 groups=["Ground"]]
 color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(-280, 40, -280, 120, 200, 120, 200, 40)
+polygon = PackedVector2Array(-202, 7, -267, 34, -360, 126, 361, 125, 210, -1, -104, -11)
 
 [node name="ExitToHallway" parent="." unique_id=810565229 instance=ExtResource("6_exit")]
 position = Vector2(-87, -43)
-target_scene = "res://scenes/hallway.tscn"
+target_scene = "res://scenes/elevator_to_hallway.tscn"
 
 [node name="ExitToBasement" parent="ExitToHallway" unique_id=1378469636 instance=ExtResource("6_exit")]
 position = Vector2(-179, 42)
