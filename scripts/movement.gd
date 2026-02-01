@@ -25,7 +25,6 @@ func _input(event: InputEvent) -> void:
 		movement_canceled.emit()
 		set_target_position_from_mouse()
 
-
 func set_target_position_from_mouse():
 	var ground: Polygon2D = get_tree().get_first_node_in_group("Ground")
 	var poly := ground.polygon
@@ -41,17 +40,19 @@ func _ready() -> void:
 		target = obj.global_position + Vector2(0, 15)
 	)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
 
 func _physics_process(delta: float) -> void:
 	var direction = position.direction_to(target)
 	velocity = direction * speed
 	if position.distance_to(target) > min_distance_to_target:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+		
+		if not $AnimatedSprite2D.is_playing():
+			$AnimatedSprite2D.play("walk")
+			
 		move_and_slide()
 	else:
 		# Reached target - check for walk-to-exit callback
