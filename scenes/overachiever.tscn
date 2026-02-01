@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bq8j2g0icjxm6"]
+
+[ext_resource type="Texture2D" uid="uid://2i2x8nr53s7k" path="res://sprites/overachiever.png" id="1_g6roa"]
+[ext_resource type="Script" uid="uid://dix121h46yokc" path="res://scripts/npc.gd" id="2_npc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_over1"]
+size = Vector2(32, 76)
+
+[node name="Overachiever" type="Area2D" unique_id=845319300]
+script = ExtResource("2_npc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1367926435]
+position = Vector2(-5, -38)
+texture = ExtResource("1_g6roa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=551396263]
+position = Vector2(0, -38)
+shape = SubResource("RectangleShape2D_over1")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
