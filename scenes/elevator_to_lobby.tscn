@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_l77j0"]
 [ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="3_8mrp6"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="4_c0nxn"]
+[ext_resource type="AudioStream" uid="uid://e163mka1t6jr" path="res://audio/music/GGJ26 - Music - Distorted Muzak - Loop.ogg" id="5_l77j0"]
 
 [node name="Elevator" type="Node2D" unique_id=1208638044]
 
@@ -28,3 +29,8 @@ polygon = PackedVector2Array(-69, 44, -88, 79, 51, 79, 36, 45)
 [node name="ExitToLobby" parent="." unique_id=1353387834 instance=ExtResource("4_c0nxn")]
 position = Vector2(-15, 23)
 target_scene = "res://scenes/lobby.tscn"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=744022343]
+stream = ExtResource("5_l77j0")
+autoplay = true
+bus = &"Music"

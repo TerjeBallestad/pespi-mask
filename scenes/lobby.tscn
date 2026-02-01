@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="6_exit"]
 [ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="7_cam"]
 [ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="10_oipnb"]
+[ext_resource type="AudioStream" uid="uid://bl8ue8baeawci" path="res://audio/music/GGJ26 - Music - Muzak.ogg" id="10_yad6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07nfq"]
 size = Vector2(24, 73)
@@ -87,4 +88,14 @@ target_scene = "res://scenes/elevator_to_hallway.tscn"
 position = Vector2(-179, 42)
 target_scene = "res://scenes/basement.tscn"
 
+[node name="ExitToOutside" parent="ExitToHallway" unique_id=1353387834 instance=ExtResource("6_exit")]
+position = Vector2(89, 168)
+target_scene = "res://scenes/outside.tscn"
+
 [node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("10_oipnb")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=347338808]
+stream = ExtResource("10_yad6j")
+autoplay = true
+bus = &"Music"
