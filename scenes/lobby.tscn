@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cvafxmihkjc45" path="res://scenes/retiree.tscn" id="3_pc087"]
 [ext_resource type="PackedScene" uid="uid://6w75cc8gomib" path="res://scenes/influencer.tscn" id="4_apkv3"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="5_pc087"]
+[ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="6_exit"]
+[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="7_cam"]
 
 [node name="Lobby" type="Node2D" unique_id=1364067709]
 
@@ -22,3 +24,22 @@ position = Vector2(-149, 6)
 
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("5_pc087")]
 position = Vector2(173, 54)
+
+[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=1139970043 node_paths=PackedStringArray("background")]
+script = ExtResource("7_cam")
+background = NodePath("../../Sprite2D")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1712603666]
+position = Vector2(173, 54)
+
+[node name="Ground" type="Polygon2D" parent="." unique_id=765097105 groups=["Ground"]]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-280, 40, -280, 120, 200, 120, 200, 40)
+
+[node name="ExitToHallway" parent="." unique_id=810565229 instance=ExtResource("6_exit")]
+position = Vector2(-87, -43)
+target_scene = "res://scenes/hallway.tscn"
+
+[node name="ExitToBasement" parent="ExitToHallway" unique_id=1378469636 instance=ExtResource("6_exit")]
+position = Vector2(-179, 42)
+target_scene = "res://scenes/basement.tscn"

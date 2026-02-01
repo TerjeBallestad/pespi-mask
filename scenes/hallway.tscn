@@ -1,8 +1,33 @@
 [gd_scene format=3 uid="uid://dg62ebwma3ebk"]
 
 [ext_resource type="Texture2D" uid="uid://diqv3l68slsaa" path="res://sprites/hall.png" id="1_owcqv"]
+[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_protag"]
+[ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
+[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
 
 [node name="Hallway" type="Node2D" unique_id=681593649]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=62199661]
 texture = ExtResource("1_owcqv")
+
+[node name="Protagonist" parent="." unique_id=275804515 instance=ExtResource("2_protag")]
+position = Vector2(0, 60)
+
+[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=1664614659 node_paths=PackedStringArray("background")]
+script = ExtResource("4_cam")
+background = NodePath("../../Sprite2D")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=2141270039]
+position = Vector2(0, 60)
+
+[node name="Ground" type="Polygon2D" parent="." unique_id=759590828 groups=["Ground"]]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-220, 40, -220, 120, 220, 120, 220, 40)
+
+[node name="ExitToLobby" parent="." unique_id=1799764257 instance=ExtResource("3_exit")]
+position = Vector2(10, -15)
+target_scene = "res://scenes/lobby.tscn"
+
+[node name="ExitToVictom" parent="." unique_id=731543484 instance=ExtResource("3_exit")]
+position = Vector2(-139, 39)
+target_scene = "res://scenes/victim-apartment.tscn"
