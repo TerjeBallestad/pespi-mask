@@ -51,6 +51,7 @@ func _physics_process(delta: float) -> void:
 	var direction = position.direction_to(target)
 	velocity = direction * speed
 	if position.distance_to(target) > min_distance_to_target:
+		$AnimatedSprite2D.flip_h = velocity.x < 0
 		move_and_slide()
 	else:
 		# Reached target - check for walk-to-exit callback
