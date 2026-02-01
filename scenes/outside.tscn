@@ -20,7 +20,7 @@ background = NodePath("../../Sprite2D")
 
 [node name="Polygon2D" parent="." unique_id=818109327 instance=ExtResource("3_udpx5")]
 position = Vector2(-181, -20)
-polygon = PackedVector2Array(576, 178, 571, 141, -213, 138, -209, 176)
+polygon = PackedVector2Array(576, 178, 571, 141, 279, 145, -213, 138, -209, 176)
 
 [node name="ExitPoint" parent="." unique_id=1353387834 instance=ExtResource("4_7r1kg")]
 position = Vector2(-8, 94)
