@@ -1,0 +1,13 @@
+{
+	"speaker" : "Brother",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Don't get me started on Ricoh."},
+		{"text" : "There I was, in the middle of my nightly yoga routine..."},
+		{"text" : "Who do you think is knocking on my door..."},
+		{"text" : "...threatening to report me if I don't stop?"},
+		{"text" : "..."},
+		{"text" : "Yeah, brother, it was me."},
+		{"text" : "Just accuse me already."}
+	]
+}

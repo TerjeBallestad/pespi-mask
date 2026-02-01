@@ -1,0 +1,12 @@
+{
+	"speaker" : "Brother",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Hm? What's that?"},
+		{"text" : "Sorry, I was thinking about which hobby to pick up next."},
+		{"text" : "Last week I mastered golf, and the week before, I made a great game in Godot."},
+		{"text" : "Want to see?"},
+		{"text" : "No?"},
+		{"text" : ":("}
+	]
+}

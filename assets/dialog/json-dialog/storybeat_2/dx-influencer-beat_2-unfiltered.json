@@ -1,0 +1,9 @@
+{
+	"speaker" : "Gerd",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "What do I do? Nobody is watching my content..."},
+		{"text" : "Maybe I should film that dead guy outside. What's his name again?"},
+		{"text" : "Robert?"}
+	]
+}

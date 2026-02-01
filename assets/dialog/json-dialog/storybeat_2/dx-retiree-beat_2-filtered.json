@@ -1,0 +1,9 @@
+{
+	"speaker" : "Kodak",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Did you like my piece of candy?"},
+		{"text" : "Is good, right?"},
+		{"text" : "...right?"}
+	]
+}
