@@ -18,6 +18,12 @@ var text_label: CrawlingText
 @export
 var options_buttons: Array[Button]
 
+@export
+var sfx_ui_hover : Sound
+
+@export
+var sfx_ui_click : Sound
+
 func _ready():
 	DialogManager.entering_dialog_playback.connect(_on_entering_dialog_playback)
 	DialogManager.entering_dialog.connect(_on_entering_dialog)
@@ -52,3 +58,10 @@ func slide_in():
 	
 func slide_out():
 	create_tween().tween_property(self, "position:y", _original_y + size.y, slide_animation_duration)
+
+func _on_option_mouse_entered() -> void:
+	AudioManager.play_sound(sfx_ui_hover)
+
+
+func _on_option_button_down() -> void:
+	AudioManager.play_sound(sfx_ui_click)

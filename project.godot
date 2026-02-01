@@ -29,6 +29,8 @@ GameState="*res://scripts/autoload/game_state.gd"
 SceneTransition="*res://scenes/autoload/scene_transition.tscn"
 DialogManager="*uid://c7py8w66008ws"
 ClickableObjectControl="*uid://bm68g6o5mutmi"
+AudioManager="*uid://bo2t11yjgjkfv"
+MusicManager="*uid://cixh8lrbjgvs5"
 
 [display]
 
