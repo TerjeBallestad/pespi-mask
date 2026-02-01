@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://bfu7p1eqyx8p1"]
 
 [ext_resource type="Texture2D" uid="uid://44rxhgd8oct5" path="res://sprites/outside.png" id="1_p61qw"]
-[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_nsm10"]
+[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_nsm10"]
+[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="3_7r1kg"]
+[ext_resource type="PackedScene" uid="uid://chxbyp78tria" path="res://scenes/navigation/ground_example.tscn" id="3_udpx5"]
+[ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="4_7r1kg"]
 
 [node name="Outside" type="Node2D" unique_id=829576486]
 
@@ -10,3 +13,15 @@ texture = ExtResource("1_p61qw")
 
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_nsm10")]
 position = Vector2(-311, 135)
+
+[node name="Camera2D" type="Camera2D" parent="Protagonist" unique_id=310808928 node_paths=PackedStringArray("background")]
+script = ExtResource("3_7r1kg")
+background = NodePath("../../Sprite2D")
+
+[node name="Polygon2D" parent="." unique_id=818109327 instance=ExtResource("3_udpx5")]
+position = Vector2(-181, -20)
+polygon = PackedVector2Array(576, 178, 571, 141, -213, 138, -209, 176)
+
+[node name="ExitPoint" parent="." unique_id=1353387834 instance=ExtResource("4_7r1kg")]
+position = Vector2(-8, 94)
+target_scene = "res://scenes/lobby.tscn"

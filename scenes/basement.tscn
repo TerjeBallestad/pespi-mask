@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://l7nocxxj8u0m" path="res://sprites/basement.png" id="1_wvfle"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_etyrx"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
-[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
 
 [node name="Basement" type="Node2D" unique_id=782234505]
 
@@ -22,7 +22,7 @@ position = Vector2(45, 89)
 
 [node name="Ground" type="Polygon2D" parent="." unique_id=875306884 groups=["Ground"]]
 color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(-200, 60, -200, 140, 200, 140, 200, 60)
+polygon = PackedVector2Array(-141, 48, -216, 120, 256, 123, 193, 44)
 
 [node name="ExitToHallway" parent="." unique_id=1799794208 instance=ExtResource("3_exit")]
 position = Vector2(-190, 53)
