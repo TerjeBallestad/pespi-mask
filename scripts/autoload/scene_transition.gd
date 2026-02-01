@@ -17,6 +17,7 @@ func change_scene(scene_path: String, fade_duration: float = 0.3) -> void:
 		return
 
 	transitioning = true
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 	# Block input during transition
 	color_rect.mouse_filter = Control.MOUSE_FILTER_STOP

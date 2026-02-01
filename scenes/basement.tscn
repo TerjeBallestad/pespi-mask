@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://qlmpkcvm4uwu"]
 
 [ext_resource type="Texture2D" uid="uid://l7nocxxj8u0m" path="res://sprites/basement.png" id="1_wvfle"]
-[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/protagonist.tscn" id="2_etyrx"]
+[ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_etyrx"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
-[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="4_cam"]
 
 [node name="Basement" type="Node2D" unique_id=782234505]
 

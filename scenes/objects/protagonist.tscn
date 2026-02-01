@@ -14,6 +14,8 @@ texture_filter = 1
 position = Vector2(-1, -44)
 sprite_frames = ExtResource("2_2cm76")
 animation = &"walk"
+frame = 4
+frame_progress = 0.59178287
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "layer_section": true,
