@@ -10,4 +10,7 @@ func _ready() -> void:
 	object_interacted_with.connect(_on_interacted)
 
 func _on_interacted(_name: String) -> void:
+	if not GameState.is_room_unlocked(target_scene):
+		return
+	
 	SceneTransition.change_scene(target_scene)
