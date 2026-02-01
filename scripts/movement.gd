@@ -38,6 +38,9 @@ func _ready() -> void:
 	target = position
 	
 	ClickableObjectControl.interaction_queued.connect(func(obj: ClickableObject):
+		if obj is ExitPoint:
+			target = (obj as ExitPoint).walk_target.global_position
+			return
 		target = obj.global_position + Vector2(0, 15)
 	)
 
@@ -61,11 +64,9 @@ func _physics_process(delta: float) -> void:
 			move_callback = Callable()
 			callback.call()
 			
-		movement_finished.emit()
+		movement_finished.emit()	
 		ClickableObjectControl.dequeue()
 
-		if $AnimatedSprite2D.is_playing():
-			$AnimatedSprite2D.stop()
 
 func walk_to_exit(exit_pos: Vector2, callback: Callable) -> void:
 	is_walking_to_exit = true
