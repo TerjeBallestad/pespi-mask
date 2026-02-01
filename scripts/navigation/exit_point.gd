@@ -1,7 +1,6 @@
 class_name ExitPoint extends ClickableObject
 
 @export var target_scene: String = ""
-@export_node_path("Marker2D") var walk_target_path: NodePath = "WalkTarget"
 
 @export var walk_target: Marker2D
 
