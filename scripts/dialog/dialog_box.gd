@@ -1,6 +1,6 @@
 class_name DialogBox extends Control
 
-signal choice_made(box: DialogBox, manager: DialogManager, choice_index: int)
+signal choice_made(box: DialogBox, choice_index: int)
 
 @onready
 var _original_y := position.y
@@ -19,30 +19,30 @@ var text_label: CrawlingText
 var options_buttons: Array[Button]
 
 func _ready():
-	%DialogManager.entering_dialog_playback.connect(_on_entering_dialog_playback)
-	%DialogManager.entering_dialog.connect(_on_entering_dialog)
-	%DialogManager.exiting_dialog.connect(_on_exiting_dialog)
-	%DialogManager.exiting_dialog_playback.connect(_on_exiting_dialog_playback)
+	DialogManager.entering_dialog_playback.connect(_on_entering_dialog_playback)
+	DialogManager.entering_dialog.connect(_on_entering_dialog)
+	DialogManager.exiting_dialog.connect(_on_exiting_dialog)
+	DialogManager.exiting_dialog_playback.connect(_on_exiting_dialog_playback)
 	
 	for i in len(options_buttons):
 		options_buttons[i].button_up.connect(func():
-			choice_made.emit(self, %DialogManager, i)
+			choice_made.emit(self, i)
 		)
 	
 	position.y = _original_y + size.y
 
 func _process(delta: float):
-	if %DialogManager.playing:
-		%DialogManager.current_dialog.process(delta, %DialogManager)
+	if DialogManager.playing:
+		DialogManager.current_dialog.process(delta) # TODO: Unused?
 		
 func _on_entering_dialog_playback():
 	slide_in()
 		
 func _on_entering_dialog(dialog: Dialog):
-	dialog.on_display(self, %DialogManager)
+	dialog.on_display(self)
 	
 func _on_exiting_dialog(dialog: Dialog):
-	dialog.on_hide(self, %DialogManager)
+	dialog.on_hide(self)
 		
 func _on_exiting_dialog_playback():
 	slide_out()

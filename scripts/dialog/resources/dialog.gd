@@ -17,11 +17,11 @@ var condition: DialogCondition
 @export
 var group_with_above := true
 
-func on_display(_box: DialogBox, _manager: DialogManager) -> void:
+func on_display(_box: DialogBox) -> void:
 	pass
 
-func on_hide(_box: DialogBox, _manager: DialogManager) -> void:
+func on_hide(_box: DialogBox) -> void:
 	pass
 
-func process(_delta: float, _manager: DialogManager) -> void:
+func process(_delta: float) -> void:
 	pass

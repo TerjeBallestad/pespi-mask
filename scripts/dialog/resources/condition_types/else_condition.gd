@@ -3,5 +3,5 @@
 
 class_name ElseCondition extends DialogCondition
 
-func is_condition_met(manager: DialogManager) -> bool:
-	return not manager.previous_node_condition_result
+func is_condition_met() -> bool:
+	return not DialogManager.previous_node_condition_result
