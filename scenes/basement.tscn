@@ -3,9 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://l7nocxxj8u0m" path="res://sprites/basement.png" id="1_wvfle"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_etyrx"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
-[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="4_cam"]
-[ext_resource type="Script" uid="uid://u6vyhkavkgde" path="res://scripts/pepsi-mask.gd" id="5_1ctny"]
+[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="Script" path="res://scripts/pepsi-mask.gd" id="5_1ctny"]
 [ext_resource type="Texture2D" uid="uid://ypf8rskx557o" path="res://sprites/pepsi-mask.png" id="6_kmq6a"]
+[ext_resource type="AudioStream" uid="uid://daq25mi0ym13n" path="res://audio/music/GGJ26 - Music - Reality.ogg" id="7_e0dxi"]
+[ext_resource type="Script" uid="uid://b2hu0vehi2ln5" path="res://scripts/audio/Interacted_with_mask_play.gd" id="8_g4j8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0dxi"]
 radius = 16.0
@@ -36,7 +38,6 @@ target_scene = "res://scenes/lobby.tscn"
 [node name="PepsiMask" type="Area2D" parent="." unique_id=636430246 groups=["clickableObject"]]
 position = Vector2(-117, 36)
 script = ExtResource("5_1ctny")
-metadata/_custom_type_script = "uid://u6vyhkavkgde"
 
 [node name="Sprite2D" type="Sprite2D" parent="PepsiMask" unique_id=786042780]
 texture = ExtResource("6_kmq6a")
@@ -45,3 +46,9 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PepsiMask" unique_id=1826610741]
 shape = SubResource("CircleShape2D_e0dxi")
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=203543706]
+stream = ExtResource("7_e0dxi")
+script = ExtResource("8_g4j8u")
+
+[connection signal="object_interacted_with" from="PepsiMask" to="AudioStreamPlayer" method="_on_pepsi_mask_object_interacted_with"]
