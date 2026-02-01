@@ -57,5 +57,5 @@ metadata/_custom_type_script = "uid://dix121h46yokc"
 position = Vector2(-244, -69)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2" unique_id=877113921]
-position = Vector2(-1, -37.5)
+position = Vector2(-242, -106)
 shape = SubResource("RectangleShape2D_drbwl")

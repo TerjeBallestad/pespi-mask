@@ -31,7 +31,7 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-139, 24, -219, 118, 250, 121, 191, 24)
 
 [node name="ExitToHallway" parent="." unique_id=991290506 instance=ExtResource("3_exit")]
-position = Vector2(234, 44)
+position = Vector2(230, 15)
 target_scene = "res://scenes/hallway.tscn"
 
 [node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("5_7tnoc")]
