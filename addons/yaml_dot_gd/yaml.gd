@@ -20,7 +20,7 @@ func parse(yaml_content: String) -> Variant:
 	var current = null    # Current working node
 	var current_type = -1 # Type of current node (NODE_DICT or NODE_LIST)
 	var last_indent = 0   # Last indent level
-
+	
 	# Multiline handling variables
 	var in_multiline = ML_NONE      # Current multiline state
 	var multiline_indent = 0        # Indent level of multiline block
@@ -30,20 +30,20 @@ func parse(yaml_content: String) -> Variant:
 	var in_quotes = false           # Inside quoted string
 	var quote_char = ""             # Type of quote (" or ')
 	var escape_next = false         # Next character is escaped
-
+	
 	# Store current key for dictionary contexts
 	var current_key = ""
-
+	
 	# Process each line in YAML content
 	for i in range(lines.size()):
 		var line_str = lines[i].rstrip("\r")
-
+		
 		# Handle quoted strings spanning multiple lines
 		if in_quotes:
 			var line_content = ""
 			for j in range(line_str.length()):
 				var c = line_str[j]
-
+				
 				# Process escaped characters
 				if escape_next:
 					escape_next = false
@@ -56,36 +56,36 @@ func parse(yaml_content: String) -> Variant:
 						"'": line_content += "'"    # Single quote
 						_: line_content += c        # Any other escaped char
 					continue
-
+				
 				# Start escape sequence
 				if c == "\\":
 					escape_next = true
 					continue
-
+				
 				# End of quoted string
 				if c == quote_char:
 					in_quotes = false
 					multiline_content.append(line_content)
 					var full_content = "\n".join(multiline_content)
-
+					
 					# Assign value to current node
 					if current_type == NODE_DICT:
 						current[multiline_key] = full_content
 					else:
 						current.append(full_content)
-
+					
 					# Reset multiline state
 					in_multiline = ML_NONE
 					multiline_content = []
 					continue
-
+				
 				line_content += c
-
+			
 			# If still in quotes, save content and continue
 			if in_quotes:
 				multiline_content.append(line_content)
 			continue
-
+		
 		# Handle literal (|) and folded (>) multiline blocks
 		if in_multiline in [ML_LITERAL, ML_FOLDED]:
 			# Check if block ended (less indentation)
@@ -93,25 +93,25 @@ func parse(yaml_content: String) -> Variant:
 			if current_indent < multiline_indent:
 				# Finalize multiline block
 				var full_content = _process_multiline_content(
-					multiline_content,
-					in_multiline,
+					multiline_content, 
+					in_multiline, 
 					multiline_chomping
 				)
-
+				
 				# Assign value to current node
 				if current_type == NODE_DICT:
 					current[multiline_key] = full_content
 				else:
 					current.append(full_content)
-
+				
 				# Reset multiline state
 				in_multiline = ML_NONE
 				multiline_content = []
-
+				
 				# Reprocess current line
 				i -= 1
 				continue
-
+			
 			# Remove block indent from multiline block lines
 			var ml_line = line_str
 			var block_indent = multiline_indent
@@ -121,16 +121,16 @@ func parse(yaml_content: String) -> Variant:
 				ml_line = ""
 			multiline_content.append(ml_line)
 			continue
-
+		
 		# Skip empty lines and comments
 		var stripped_line = line_str.lstrip(" \t")
 		if stripped_line.is_empty() or stripped_line[0] == "#":
 			continue
-
+		
 		# Calculate current indent level
 		var indent = _get_indent_level(line_str)
 		var content_str = line_str.substr(indent)
-
+		
 		# Handle decreased indentation (pop stack)
 		if indent < last_indent:
 			# Pop stack until matching indent level
@@ -140,7 +140,7 @@ func parse(yaml_content: String) -> Variant:
 				current_type = popped[2]
 				if current_type == NODE_DICT:
 					current_key = popped[3] if popped.size() > 3 else ""
-
+		
 		# Initialize root node
 		if root == null:
 			if content_str.begins_with("-"):
@@ -152,18 +152,18 @@ func parse(yaml_content: String) -> Variant:
 				current = root
 				current_type = NODE_DICT
 			stack.append([indent, current, current_type, current_key])
-
+		
 		# Process list items - FIXED SECTION
 		if content_str.begins_with("-"):
 			# Extract list item content
 			var item_content = content_str.substr(1).strip_edges()
 			var parts = _split_key_value(item_content)
-
+			
 			# Handle empty items (dash followed by nothing)
 			if item_content.strip_edges().is_empty():
 				# Create a new dictionary for the empty item
 				var new_dict = {}
-
+				
 				if current_type == NODE_LIST:
 					current.append(new_dict)
 					# Push the list context to stack
@@ -175,19 +175,19 @@ func parse(yaml_content: String) -> Variant:
 				else:
 					# Create a new list for the dictionary value
 					var new_list = [new_dict]
-
+					
 					# Assign to current key in parent dictionary
 					if stack.size() > 0:
 						var parent = stack.back()[1]
 						var parent_type = stack.back()[2]
 						if parent_type == NODE_DICT:
 							parent[current_key] = new_list
-
+					
 					# Update current node to the new list
 					current = new_list
 					current_type = NODE_LIST
 					stack.append([indent, current, current_type, current_key])
-
+					
 					# Push the dictionary to stack
 					stack.append([indent, new_dict, NODE_DICT, ""])
 					current = new_dict
@@ -200,14 +200,14 @@ func parse(yaml_content: String) -> Variant:
 				else:
 					# Create a new list for the dictionary value
 					var new_list = [_parse_value(parts[0])]
-
+					
 					# Assign to current key in parent dictionary
 					if stack.size() > 0:
 						var parent = stack.back()[1]
 						var parent_type = stack.back()[2]
 						if parent_type == NODE_DICT:
 							parent[current_key] = new_list
-
+					
 					# Update current node to the new list
 					current = new_list
 					current_type = NODE_LIST
@@ -217,7 +217,7 @@ func parse(yaml_content: String) -> Variant:
 				# Dictionary in list
 				var new_dict = {}
 				new_dict[parts[0]] = _parse_value(parts[1])
-
+				
 				if current_type == NODE_LIST:
 					current.append(new_dict)
 					# Save the list context for popping later
@@ -229,33 +229,33 @@ func parse(yaml_content: String) -> Variant:
 				else:
 					# Create a new list for the dictionary
 					var new_list = [new_dict]
-
+					
 					# Assign to current key in parent dictionary
 					if stack.size() > 0:
 						var parent = stack.back()[1]
 						var parent_type = stack.back()[2]
 						if parent_type == NODE_DICT:
 							parent[current_key] = new_list
-
+					
 					# Update current node to the new list
 					current = new_list
 					current_type = NODE_LIST
 					stack.append([indent, current, current_type, current_key])
-
+					
 					# Now push the dictionary for children
 					stack.append([indent, new_dict, NODE_DICT, parts[0]])
 					current = new_dict
 					current_type = NODE_DICT
 					current_key = parts[0]
-
+				
 		# Process key-value pairs
 		else:
 			var parts = _split_key_value(content_str)
 			var key = parts[0]
 			var value_str = parts[1]
-
+			
 			current_key = key  # Store current key for reference
-
+			
 			if value_str == null:
 				# Look ahead: is next line more indented? If so, create dict, else assign null
 				var next_indent = -1
@@ -272,7 +272,7 @@ func parse(yaml_content: String) -> Variant:
 					if next_indent > indent:
 						is_child = true
 					break
-
+				
 				if is_child:
 					var new_dict = {}
 					if current_type == NODE_DICT:
@@ -302,7 +302,7 @@ func parse(yaml_content: String) -> Variant:
 					multiline_indent = indent
 					multiline_key = key
 					multiline_content = []
-
+					
 					# Determine chomping behavior
 					if value_str.ends_with("-"):
 						multiline_chomping = "strip"
@@ -317,11 +317,11 @@ func parse(yaml_content: String) -> Variant:
 					in_multiline = ML_DOUBLE_QUOTE if quote_char == '"' else ML_SINGLE_QUOTE
 					multiline_key = key
 					multiline_content = []
-
+					
 					# Parse the quoted string (without trailing newline)
 					var quoted_value = _parse_quoted_string(value_str)
 					multiline_content.append(quoted_value)
-
+					
 					# Check if quoted string ends on same line
 					if value_str.ends_with(quote_char) && !value_str.ends_with("\\" + quote_char):
 						in_quotes = false
@@ -334,22 +334,22 @@ func parse(yaml_content: String) -> Variant:
 				else:
 					# Normal value
 					var value = _parse_value(value_str)
-
+					
 					if current_type == NODE_DICT:
 						current[key] = value
 					else:
 						current.append(value)
-
+		
 		last_indent = indent
-
+	
 	# Process any remaining multiline content
 	if in_multiline in [ML_LITERAL, ML_FOLDED]:
 		var full_content = _process_multiline_content(
-			multiline_content,
-			in_multiline,
+			multiline_content, 
+			in_multiline, 
 			multiline_chomping
 		)
-
+		
 		if current_type == NODE_DICT:
 			current[multiline_key] = full_content
 		else:
@@ -362,7 +362,7 @@ func parse(yaml_content: String) -> Variant:
 			current[multiline_key] = full_content
 		else:
 			current.append(full_content)
-
+	
 	return root
 
 # Process multiline content based on style and chomping
@@ -373,7 +373,7 @@ func _process_multiline_content(content: Array, style: int, chomping: String) ->
 			content.pop_front()
 		while content.size() > 0 and content[content.size() - 1].strip_edges().is_empty():
 			content.pop_back()
-
+	
 	# Find minimum indent among non-empty lines
 	var min_indent = 0
 	var has_non_empty = false
@@ -384,22 +384,22 @@ func _process_multiline_content(content: Array, style: int, chomping: String) ->
 		if not has_non_empty or line_indent < min_indent:
 			min_indent = line_indent
 			has_non_empty = true
-
+	
 	# Remove common indentation
 	var processed_lines = []
 	for line in content:
 		if line.strip_edges().is_empty():
 			processed_lines.append("")
 			continue
-
+		
 		if line.length() > min_indent:
 			# Preserve tabs in content
 			processed_lines.append(line.substr(min_indent))
 		else:
 			processed_lines.append(line)
-
+	
 	var full_content = "\n".join(processed_lines)
-
+	
 	# Apply chomping behavior
 	match chomping:
 		"strip":
@@ -414,17 +414,17 @@ func _process_multiline_content(content: Array, style: int, chomping: String) ->
 				full_content = full_content.rstrip("\n") + "\n"
 			else:
 				full_content += "\n"
-
+	
 	# Apply folding for folded style
 	if style == ML_FOLDED:
 		var lines = full_content.split("\n")
 		var result = []
 		var prev_empty = false
-
+		
 		for i in range(lines.size()):
 			var line = lines[i]
 			var is_empty = line.strip_edges().is_empty()
-
+			
 			if is_empty:
 				result.append("")
 				prev_empty = true
@@ -435,9 +435,9 @@ func _process_multiline_content(content: Array, style: int, chomping: String) ->
 				else:
 					result.append(line)
 				prev_empty = false
-
+		
 		full_content = "\n".join(result)
-
+	
 	return full_content
 
 # Count leading whitespace characters (only spaces)
@@ -455,39 +455,39 @@ static func _split_key_value(line: String) -> Array:
 	var in_quotes = false
 	var escape = false
 	var colon_pos = -1
-
+	
 	# Find first unquoted colon
 	for i in range(line.length()):
 		var c = line[i]
-
+		
 		if escape:
 			escape = false
 			continue
-
+			
 		if c == '\\':
 			escape = true
 			continue
-
+			
 		if c == '"' or c == "'":
 			in_quotes = !in_quotes
 			continue
-
+			
 		if !in_quotes and c == ':':
 			colon_pos = i
 			break
-
+	
 	# No colon found - return as key with null value
 	if colon_pos == -1:
 		return [line.strip_edges(), null]
-
+	
 	# Split key and value
 	var key = line.substr(0, colon_pos).strip_edges()
 	var value = line.substr(colon_pos + 1).strip_edges()
-
+	
 	# Handle empty values
 	if value.is_empty():
 		value = null
-
+	
 	return [key, value]
 
 # Convert string to appropriate data type
@@ -497,7 +497,7 @@ static func _parse_value(s: String) -> Variant:
 	if s == "false": return false
 	if s.is_valid_int(): return s.to_int()
 	if s.is_valid_float(): return s.to_float()
-
+	
 	# Handle inline arrays
 	if s.begins_with("[") and s.ends_with("]"):
 		var items = s.substr(1, s.length() - 2).split(",", false)
@@ -505,11 +505,11 @@ static func _parse_value(s: String) -> Variant:
 		for item in items:
 			result.append(_parse_value(item.strip_edges()))
 		return result
-
+	
 	# Handle quoted strings
 	if (s.begins_with('"') and s.ends_with('"')) or (s.begins_with("'") and s.ends_with("'")):
 		return _parse_quoted_string(s)
-
+	
 	return s
 
 # Parse quoted strings with escape sequences
@@ -518,13 +518,13 @@ static func _parse_quoted_string(s: String) -> String:
 	var content = s
 	if content.length() >= 2:
 		content = content.substr(1, content.length() - 2)
-
+	
 	var result = ""
 	var escape = false
-
+	
 	for i in range(content.length()):
 		var c = content[i]
-
+		
 		# Process escape sequences
 		if escape:
 			escape = false
@@ -537,14 +537,14 @@ static func _parse_quoted_string(s: String) -> String:
 				"'": result += "'"    # Single quote
 				_: result += c        # Any other escaped char
 			continue
-
+		
 		# Start escape sequence
 		if c == "\\":
 			escape = true
 			continue
-
+		
 		result += c
-
+	
 	return result
 
 # Calculate indent level (only spaces)

@@ -23,6 +23,12 @@ config/icon="res://icon.svg"
 
 aseprite_executable_path="/Users/godstemning/Library/Application Support/Steam/steamapps/common/Aseprite/Aseprite.app"
 
+[autoload]
+
+GameState="*res://scripts/autoload/game_state.gd"
+SceneTransition="*res://scenes/autoload/scene_transition.tscn"
+PepsiManager="*res://scripts/pepsi_manager.gd"
+
 [display]
 
 window/size/viewport_width=320
@@ -33,18 +39,12 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/yaml_dot_gd/plugin.cfg")
 
 [global_group]
 
 clickableObject="objects you can click on "
 Ground="Character can walk on "
-
-[autoload]
-
-GameState="*res://scripts/autoload/game_state.gd"
-SceneTransition="*res://scenes/autoload/scene_transition.tscn"
-PepsiManager="*res://scripts/pepsi_manager.gd"
 
 [rendering]
 

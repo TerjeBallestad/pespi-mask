@@ -16,12 +16,15 @@ texture = ExtResource("1_o1atq")
 
 [node name="Overachiever" parent="." unique_id=845319300 instance=ExtResource("2_nqcc7")]
 position = Vector2(-16, 18)
+script = null
 
 [node name="Retiree" parent="." unique_id=908568966 instance=ExtResource("3_pc087")]
 position = Vector2(-206, 100)
+script = null
 
 [node name="Influencer" parent="." unique_id=1481530276 instance=ExtResource("4_apkv3")]
 position = Vector2(-149, 6)
+script = null
 
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("5_pc087")]
 position = Vector2(173, 54)

@@ -1,6 +1,7 @@
 extends TextureButton
 
 func _ready() -> void:
+	toggle_mode = true
 	visible = GameState.get_flag("has_mask")
 	toggled.connect(_on_toggled)
 
@@ -17,7 +18,8 @@ func _on_flag_changed(flag_name: String, _value: Variant) -> void:
 
 func _on_toggled(is_pressed: bool) -> void:
 	# Block toggle during dialog
-	if has_node("%DialogManager") and %DialogManager.playing:
+	var dialog_mgr = get_tree().current_scene.get_node_or_null("GameUI/DialogManager")
+	if dialog_mgr and dialog_mgr.playing:
 		button_pressed = not is_pressed  # Revert
 		return
 
@@ -25,7 +27,6 @@ func _on_toggled(is_pressed: bool) -> void:
 		PepsiManager.put_on_mask()
 	else:
 		PepsiManager.remove_mask()
-
 	_update_visual()
 
 func _update_visual() -> void:
