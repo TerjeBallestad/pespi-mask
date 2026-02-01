@@ -14,6 +14,14 @@ var is_walking_to_exit: bool = false
 
 
 func _input(event: InputEvent) -> void:
+		# Block input during dialog
+	if has_node("%DialogManager") and %DialogManager.playing:
+		return
+
+	# Block during scene transitions
+	if SceneTransition.transitioning:
+		return
+
 	if event is InputEventMouseButton && event.pressed:
 		# Cancel walk-to-exit if player clicks elsewhere
 		if is_walking_to_exit:

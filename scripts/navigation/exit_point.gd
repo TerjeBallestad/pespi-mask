@@ -33,6 +33,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func _try_exit() -> void:
+	# Block exit during dialog
+	if has_node("%DialogManager") and %DialogManager.playing:
+		return
+
 	if target_scene.is_empty():
 		push_warning("ExitPoint has no target_scene set")
 		return
