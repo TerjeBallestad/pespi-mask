@@ -7,7 +7,6 @@ var normal_dialog: DialogSequence
 var pepsi_dialog: DialogSequence
 
 func _ready() -> void:
-	super._ready()
 	object_interacted_with.connect(_on_interacted)
 
 func _on_interacted(_name: String) -> void:

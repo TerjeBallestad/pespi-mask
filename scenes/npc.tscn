@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://7mot0oyx15tr"]
+
+[ext_resource type="Script" uid="uid://dix121h46yokc" path="res://scripts/npc.gd" id="1_nh2m4"]
+
+[node name="Npc" type="Area2D" unique_id=1118003901]
+script = ExtResource("1_nh2m4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=190114410]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=202241738]
