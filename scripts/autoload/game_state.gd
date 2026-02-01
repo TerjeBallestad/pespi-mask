@@ -5,7 +5,7 @@ var clues: Dictionary = {}
 var flags: Dictionary = {}
 var dialog_history: Dictionary = {}
 var _wearing_pepsi_mask := false
-var _has_pepsi_mask := true
+var _has_pepsi_mask := false
 
 signal putting_on_mask
 signal removing_mask
