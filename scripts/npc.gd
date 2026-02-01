@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_interacted(_name: String) -> void:
 	var seq := normal_dialog
 	
-	if %PepsiManager.is_wearing_pepsi_mask():
+	if GameState.is_wearing_pepsi_mask():
 		seq = pepsi_dialog
 		
 	%DialogManager.start_dialog(seq)
