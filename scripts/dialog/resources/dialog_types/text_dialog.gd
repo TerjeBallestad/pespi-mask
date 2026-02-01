@@ -15,6 +15,8 @@ func on_display(box: DialogBox) -> void:
 	if not speaker:
 		spkr = DialogManager.last_speaker
 		
+	box.portrait.texture = speaker.portrait
+		
 	DialogManager.last_speaker = spkr
 		
 	box.speaker_label.text = spkr.name

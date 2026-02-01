@@ -5,12 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cvafxmihkjc45" path="res://scenes/objects/npcs/retiree.tscn" id="3_pc087"]
 [ext_resource type="Script" uid="uid://dix121h46yokc" path="res://scripts/npc.gd" id="4_07nfq"]
 [ext_resource type="PackedScene" uid="uid://6w75cc8gomib" path="res://scenes/objects/npcs/influencer.tscn" id="4_apkv3"]
-[ext_resource type="Resource" uid="uid://b0fayrs1r7kwc" path="res://assets/dialog/sequences/influencer/influencer_normal.tres" id="5_oipnb"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="5_pc087"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="6_exit"]
 [ext_resource type="Script" path="res://scripts/camera_movement.gd" id="7_cam"]
-[ext_resource type="PackedScene" uid="uid://70mqawldnge" path="res://scenes/ui/dialog_box.tscn" id="10_oipnb"]
-[ext_resource type="Theme" uid="uid://crfgr67xom60a" path="res://assets/ui/base_theme.tres" id="11_yad6j"]
+[ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="10_oipnb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yad6j"]
 size = Vector2(28, 82)
@@ -29,8 +27,8 @@ position = Vector2(-206, 100)
 [node name="InfluencerNPC" type="Area2D" parent="." unique_id=1063762653 groups=["clickableObject"]]
 position = Vector2(-149, 6)
 script = ExtResource("4_07nfq")
-normal_dialog = ExtResource("5_oipnb")
-pepsi_dialog = ExtResource("5_oipnb")
+normal_dialog_path = "res://assets/dialog/sequences/influencer/normal.json"
+pepsi_dialog_path = "res://assets/dialog/sequences/influencer/normal.json"
 metadata/_custom_type_script = "uid://dix121h46yokc"
 
 [node name="Influencer" parent="InfluencerNPC" unique_id=1481530276 instance=ExtResource("4_apkv3")]
@@ -63,8 +61,4 @@ target_scene = "res://scenes/hallway.tscn"
 position = Vector2(-179, 42)
 target_scene = "res://scenes/basement.tscn"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1478554346]
-
-[node name="DialogBox" parent="CanvasLayer" unique_id=1946601530 instance=ExtResource("10_oipnb")]
-offset_top = 96.0
-theme = ExtResource("11_yad6j")
+[node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("10_oipnb")]

@@ -16,6 +16,9 @@ var speaker_label: RichTextLabel
 var text_label: CrawlingText
 
 @export
+var portrait: TextureRect
+
+@export
 var options_buttons: Array[Button]
 
 @export

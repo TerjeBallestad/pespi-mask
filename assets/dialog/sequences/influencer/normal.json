@@ -1,0 +1,10 @@
+{
+  "speaker": "The Influencer",
+  "portrait": "res://sprites/portrait-neighbor.png",
+  "entries": [
+	{"text": "Oh my god, hi! Are you new here?"},
+	{"text": "This building is absolutely amazing. I love everyone here!"},
+	{"text": "The community is so supportive and wholesome."},
+	{"text": "Anyway, gotta go! Content doesn't make itself. Byeee!"}
+  ]
+}

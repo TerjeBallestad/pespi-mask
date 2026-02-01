@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://p1avxbudm00a"]
+
+[ext_resource type="PackedScene" uid="uid://70mqawldnge" path="res://scenes/ui/dialog_box.tscn" id="1_f5cxw"]
+[ext_resource type="Theme" uid="uid://crfgr67xom60a" path="res://assets/ui/base_theme.tres" id="2_aac20"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1451279979]
+
+[node name="DialogBox" parent="." unique_id=1946601530 instance=ExtResource("1_f5cxw")]
+offset_top = 96.0
+theme = ExtResource("2_aac20")
