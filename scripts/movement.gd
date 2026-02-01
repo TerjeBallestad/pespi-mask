@@ -53,8 +53,7 @@ func _physics_process(delta: float) -> void:
 	if position.distance_to(target) > min_distance_to_target:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 		
-		if not $AnimatedSprite2D.is_playing():
-			$AnimatedSprite2D.play("walk")
+		$AnimatedSprite2D.play("walk_mask" if GameState.is_wearing_pepsi_mask() else "walk")
 			
 		move_and_slide()
 	else:
@@ -68,8 +67,7 @@ func _physics_process(delta: float) -> void:
 		movement_finished.emit()	
 		ClickableObjectControl.dequeue()
 
-		if $AnimatedSprite2D.is_playing():
-			$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("idle_mask" if GameState.is_wearing_pepsi_mask() else "idle")
 
 func walk_to_exit(exit_pos: Vector2, callback: Callable) -> void:
 	is_walking_to_exit = true
