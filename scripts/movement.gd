@@ -68,6 +68,8 @@ func _physics_process(delta: float) -> void:
 		movement_finished.emit()	
 		ClickableObjectControl.dequeue()
 
+		if $AnimatedSprite2D.is_playing():
+			$AnimatedSprite2D.stop()
 
 func walk_to_exit(exit_pos: Vector2, callback: Callable) -> void:
 	is_walking_to_exit = true
