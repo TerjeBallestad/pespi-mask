@@ -1,0 +1,15 @@
+{
+	"speaker" : "Kodak",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "I remember a time before all this politically correct bull..."},
+		{"text" : "Now, mere conversation is like navigating a jungle under fire."},
+		{"text" : "Like I imagine 'nam would be like, if didn't dodge the draft."},
+		{"text" : "..."},
+		{"text" : "I'll just come out and say it."},
+		{"text" : "..."},
+		{"text" : "I'm saying it for real now..."},
+		{"text" : "..."},
+		{"text" : "Ricoh was a cunt."}
+	]
+}

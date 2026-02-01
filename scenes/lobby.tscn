@@ -10,6 +10,12 @@
 [ext_resource type="Script" path="res://scripts/camera_movement.gd" id="7_cam"]
 [ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="10_oipnb"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07nfq"]
+size = Vector2(24, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oipnb"]
+size = Vector2(26, 83)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yad6j"]
 size = Vector2(28, 82)
 
@@ -18,17 +24,37 @@ size = Vector2(28, 82)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2074024614]
 texture = ExtResource("1_o1atq")
 
-[node name="Overachiever" parent="." unique_id=845319300 instance=ExtResource("2_nqcc7")]
+[node name="Npc" type="Area2D" parent="." unique_id=1358927776]
 position = Vector2(-16, 18)
+script = ExtResource("4_07nfq")
+normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-overachiever-beat_2-filtered.json"
+pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-overachiever-beat_2-unfiltered.json"
+metadata/_custom_type_script = "uid://dix121h46yokc"
 
-[node name="Retiree" parent="." unique_id=908568966 instance=ExtResource("3_pc087")]
+[node name="Overachiever" parent="Npc" unique_id=845319300 instance=ExtResource("2_nqcc7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=1912933863]
+position = Vector2(-2, -35.5)
+shape = SubResource("RectangleShape2D_07nfq")
+
+[node name="Npc2" type="Area2D" parent="." unique_id=659302877]
 position = Vector2(-206, 100)
+script = ExtResource("4_07nfq")
+normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_1/dx-retiree-beat_1-filtered.json"
+pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-retiree-beat_2-unfiltered.json"
+metadata/_custom_type_script = "uid://dix121h46yokc"
+
+[node name="Retiree" parent="Npc2" unique_id=908568966 instance=ExtResource("3_pc087")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2" unique_id=2126887004]
+position = Vector2(-1, -37.5)
+shape = SubResource("RectangleShape2D_oipnb")
 
 [node name="InfluencerNPC" type="Area2D" parent="." unique_id=1063762653 groups=["clickableObject"]]
 position = Vector2(-149, 6)
 script = ExtResource("4_07nfq")
-normal_dialog_path = "res://assets/dialog/sequences/influencer/normal.json"
-pepsi_dialog_path = "res://assets/dialog/sequences/influencer/normal.json"
+normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-influencer-beat_2-filtered.json"
+pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-influencer-beat_2-unfiltered.json"
 metadata/_custom_type_script = "uid://dix121h46yokc"
 
 [node name="Influencer" parent="InfluencerNPC" unique_id=1481530276 instance=ExtResource("4_apkv3")]

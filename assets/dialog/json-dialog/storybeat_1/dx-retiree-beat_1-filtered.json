@@ -1,0 +1,14 @@
+{
+	"speaker" : "Kodak",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Well hello, lad."},
+		{"text" : "Would you like a candy? I always keep a spare for strangers."},
+		{"text" : "Waaaay down in my pocket."},
+		{"text" : "..."},
+		{"text" : "...way down there."},
+		{"text" : "..."},
+		{"text" : "...what's this?"},
+		{"text" : "Oh, my picture of Ricoh doing shady stuff in the basement. Lovely."}
+	]
+}

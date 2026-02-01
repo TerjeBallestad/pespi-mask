@@ -1,0 +1,9 @@
+{
+	"speaker" : "Gerd",
+	"portrait" : "res://sprites/portrait-neighbor.png",
+	"entries" : [
+		{"text" : "Oh my god, hi! Are you new here?"},
+		{"text" : "This building is absolutely amazing and wholesome. I love everyone here!"},
+		{"text" : "Anyway, gotta go! Content doesn't make itself! Byeeee~!<3"}
+	]
+}
