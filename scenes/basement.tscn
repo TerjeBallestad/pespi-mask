@@ -3,11 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://l7nocxxj8u0m" path="res://sprites/basement.png" id="1_wvfle"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_etyrx"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
-[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
-[ext_resource type="Script" path="res://scripts/pepsi-mask.gd" id="5_1ctny"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="Script" uid="uid://u6vyhkavkgde" path="res://scripts/pepsi-mask.gd" id="5_1ctny"]
 [ext_resource type="Texture2D" uid="uid://ypf8rskx557o" path="res://sprites/pepsi-mask.png" id="6_kmq6a"]
 [ext_resource type="AudioStream" uid="uid://daq25mi0ym13n" path="res://audio/music/GGJ26 - Music - Reality.ogg" id="7_e0dxi"]
-[ext_resource type="Script" uid="uid://b2hu0vehi2ln5" path="res://scripts/audio/Interacted_with_mask_play.gd" id="8_g4j8u"]
+[ext_resource type="Script" path="res://scripts/audio/Interacted_with_mask_play.gd" id="8_g4j8u"]
+[ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="9_g4j8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0dxi"]
 radius = 16.0
@@ -50,5 +51,7 @@ metadata/_edit_lock_ = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=203543706]
 stream = ExtResource("7_e0dxi")
 script = ExtResource("8_g4j8u")
+
+[node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("9_g4j8u")]
 
 [connection signal="object_interacted_with" from="PepsiMask" to="AudioStreamPlayer" method="_on_pepsi_mask_object_interacted_with"]

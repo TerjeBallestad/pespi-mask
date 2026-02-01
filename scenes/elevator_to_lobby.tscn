@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://bdxnartkgg4jp"]
+[gd_scene format=3 uid="uid://ggascbpwua70"]
 
 [ext_resource type="Texture2D" uid="uid://b6o7w33htbe3p" path="res://sprites/elevator.png" id="1_ko634"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_l77j0"]
-[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="3_8mrp6"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="3_8mrp6"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="4_c0nxn"]
 [ext_resource type="AudioStream" uid="uid://e163mka1t6jr" path="res://audio/music/GGJ26 - Music - Distorted Muzak - Loop.ogg" id="5_l77j0"]
+[ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="6_8mrp6"]
 
 [node name="Elevator" type="Node2D" unique_id=1208638044]
 
@@ -34,3 +35,5 @@ target_scene = "res://scenes/lobby.tscn"
 stream = ExtResource("5_l77j0")
 autoplay = true
 bus = &"Music"
+
+[node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("6_8mrp6")]

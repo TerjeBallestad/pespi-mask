@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dde0fkmsqa1n6" path="res://sprites/victim-apartment.png" id="1_cj480"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_vq267"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
-[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="5_7tnoc"]
 
 [node name="VictimApartment" type="Node2D" unique_id=549744487]
 
@@ -27,3 +28,5 @@ polygon = PackedVector2Array(-139, 24, -219, 118, 250, 121, 191, 24)
 [node name="ExitToHallway" parent="." unique_id=991290506 instance=ExtResource("3_exit")]
 position = Vector2(234, 44)
 target_scene = "res://scenes/hallway.tscn"
+
+[node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("5_7tnoc")]

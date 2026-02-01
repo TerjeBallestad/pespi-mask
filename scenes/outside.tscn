@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://bfu7p1eqyx8p1"]
+[gd_scene format=3 uid="uid://df2tf1fcc2wbb"]
 
 [ext_resource type="Texture2D" uid="uid://44rxhgd8oct5" path="res://sprites/outside.png" id="1_p61qw"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_nsm10"]
-[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="3_7r1kg"]
-[ext_resource type="PackedScene" uid="uid://chxbyp78tria" path="res://scenes/navigation/ground_example.tscn" id="3_udpx5"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="3_7r1kg"]
+[ext_resource type="PackedScene" path="res://scenes/navigation/ground_example.tscn" id="3_udpx5"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="4_7r1kg"]
+[ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="6_bkgx0"]
 
 [node name="Outside" type="Node2D" unique_id=829576486]
 
@@ -25,3 +26,5 @@ polygon = PackedVector2Array(576, 178, 571, 141, 279, 145, -213, 138, -209, 176)
 [node name="ExitPoint" parent="." unique_id=1353387834 instance=ExtResource("4_7r1kg")]
 position = Vector2(-8, 94)
 target_scene = "res://scenes/lobby.tscn"
+
+[node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("6_bkgx0")]

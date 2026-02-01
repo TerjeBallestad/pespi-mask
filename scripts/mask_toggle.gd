@@ -19,13 +19,16 @@ func _ready() -> void:
 	DialogManager.exiting_dialog_playback.connect(_on_obtain_mask)
 
 	_update_visual()
-	_on_obtain_mask() # To load default visibility
+	_on_obtain_mask() 
+	# To load default visibility
 
 func _on_entering_dialog_playback():
 	visible = false
 
 func _on_obtain_mask() -> void:
 	visible = GameState.has_pepsi_mask()
+	button_pressed = GameState.is_wearing_pepsi_mask()
+		
 
 func _on_toggled(is_pressed: bool) -> void:
 	# Block toggle during dialog

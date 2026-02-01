@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://diqv3l68slsaa" path="res://sprites/hall.png" id="1_owcqv"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_protag"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
-[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="5_1k2v8"]
 
 [node name="Hallway" type="Node2D" unique_id=681593649]
 
@@ -31,3 +32,5 @@ target_scene = "res://scenes/elevator_to_lobby.tscn"
 [node name="ExitToVictom" parent="." unique_id=731543484 instance=ExtResource("3_exit")]
 position = Vector2(-139, 39)
 target_scene = "res://scenes/victim-apartment.tscn"
+
+[node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("5_1k2v8")]
