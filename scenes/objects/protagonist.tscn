@@ -8,13 +8,14 @@ size = Vector2(21, 81)
 
 [node name="Protagonist" type="CharacterBody2D" unique_id=322512914 groups=["player"]]
 script = ExtResource("1_2cm76")
+speed = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759555526]
 texture_filter = 1
 position = Vector2(-1, -44)
 sprite_frames = ExtResource("2_2cm76")
 animation = &"walk"
-frame = 4
+frame = 3
 frame_progress = 0.59178287
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,

@@ -18,6 +18,18 @@ radius = 16.0
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=572774069]
 texture = ExtResource("1_wvfle")
 
+[node name="PepsiMask" type="Area2D" parent="." unique_id=636430246 groups=["clickableObject"]]
+position = Vector2(-88, 33)
+script = ExtResource("5_1ctny")
+
+[node name="Sprite2D" type="Sprite2D" parent="PepsiMask" unique_id=786042780]
+texture = ExtResource("6_kmq6a")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PepsiMask" unique_id=1826610741]
+shape = SubResource("CircleShape2D_e0dxi")
+metadata/_edit_lock_ = true
+
 [node name="Protagonist" parent="." unique_id=1841742184 instance=ExtResource("2_etyrx")]
 position = Vector2(45, 89)
 
@@ -33,20 +45,8 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-141, 48, -216, 120, 256, 123, 193, 44)
 
 [node name="ExitToHallway" parent="." unique_id=1799794208 instance=ExtResource("3_exit")]
-position = Vector2(-190, 53)
+position = Vector2(-178, 40)
 target_scene = "res://scenes/lobby.tscn"
-
-[node name="PepsiMask" type="Area2D" parent="." unique_id=636430246 groups=["clickableObject"]]
-position = Vector2(-117, 36)
-script = ExtResource("5_1ctny")
-
-[node name="Sprite2D" type="Sprite2D" parent="PepsiMask" unique_id=786042780]
-texture = ExtResource("6_kmq6a")
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PepsiMask" unique_id=1826610741]
-shape = SubResource("CircleShape2D_e0dxi")
-metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=203543706]
 stream = ExtResource("7_e0dxi")

@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://cnf6vbfb8p1oi" path="res://scripts/navigation/exit_point.gd" id="1_exit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exit1"]
-size = Vector2(30, 60)
+size = Vector2(42, 82)
 
 [node name="ExitPoint" type="Area2D" unique_id=1353387834 node_paths=PackedStringArray("walk_target")]
 script = ExtResource("1_exit")
 walk_target = NodePath("WalkTarget")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767489944]
+position = Vector2(6, 11)
 shape = SubResource("RectangleShape2D_exit1")
 
 [node name="WalkTarget" type="Marker2D" parent="." unique_id=987426399]

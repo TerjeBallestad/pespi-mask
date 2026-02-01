@@ -5,6 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
 [ext_resource type="Script" path="res://scripts/camera_movement.gd" id="4_cam"]
 [ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="5_7tnoc"]
+[ext_resource type="Script" uid="uid://dix121h46yokc" path="res://scripts/npc.gd" id="6_45o2n"]
+[ext_resource type="PackedScene" uid="uid://dtbesobclkmyj" path="res://scenes/objects/npcs/overachiever.tscn" id="7_v8t0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0jmi"]
+size = Vector2(24, 73)
 
 [node name="VictimApartment" type="Node2D" unique_id=549744487]
 
@@ -30,3 +35,16 @@ position = Vector2(234, 44)
 target_scene = "res://scenes/hallway.tscn"
 
 [node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("5_7tnoc")]
+
+[node name="Npc" type="Area2D" parent="." unique_id=661931882]
+position = Vector2(-113, 43)
+script = ExtResource("6_45o2n")
+normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-overachiever-beat_2-filtered.json"
+pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-overachiever-beat_2-unfiltered.json"
+metadata/_custom_type_script = "uid://dix121h46yokc"
+
+[node name="Overachiever" parent="Npc" unique_id=845319300 instance=ExtResource("7_v8t0k")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=363331465]
+position = Vector2(-2, -35.5)
+shape = SubResource("RectangleShape2D_o0jmi")

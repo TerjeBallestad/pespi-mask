@@ -3,13 +3,24 @@
 [ext_resource type="Texture2D" uid="uid://diqv3l68slsaa" path="res://sprites/hall.png" id="1_owcqv"]
 [ext_resource type="PackedScene" uid="uid://iyl2b2hg026c" path="res://scenes/objects/protagonist.tscn" id="2_protag"]
 [ext_resource type="PackedScene" uid="uid://dpoq815ist814" path="res://scenes/navigation/exit_point.tscn" id="3_exit"]
-[ext_resource type="Script" uid="uid://b0nkgpaw424r1" path="res://scripts/camera_movement.gd" id="4_cam"]
+[ext_resource type="Script" path="res://scripts/camera_movement.gd" id="4_cam"]
 [ext_resource type="PackedScene" uid="uid://p1avxbudm00a" path="res://scenes/ui/ui.tscn" id="5_1k2v8"]
+[ext_resource type="Texture2D" uid="uid://bf7la58gmx41l" path="res://sprites/pepsi-man.png" id="6_txc3n"]
+[ext_resource type="Script" uid="uid://dix121h46yokc" path="res://scripts/npc.gd" id="7_nlnob"]
+[ext_resource type="PackedScene" uid="uid://cvafxmihkjc45" path="res://scenes/objects/npcs/retiree.tscn" id="8_w57m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drbwl"]
+size = Vector2(26, 83)
 
 [node name="Hallway" type="Node2D" unique_id=681593649]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=62199661]
 texture = ExtResource("1_owcqv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=740197623]
+position = Vector2(90, -44.000004)
+scale = Vector2(0.15964848, 0.09362139)
+texture = ExtResource("6_txc3n")
 
 [node name="Protagonist" parent="." unique_id=275804515 instance=ExtResource("2_protag")]
 position = Vector2(0, 60)
@@ -34,3 +45,17 @@ position = Vector2(-139, 39)
 target_scene = "res://scenes/victim-apartment.tscn"
 
 [node name="CanvasLayer" parent="." unique_id=1451279979 instance=ExtResource("5_1k2v8")]
+
+[node name="Npc2" type="Area2D" parent="." unique_id=1096983450]
+position = Vector2(150, 98)
+script = ExtResource("7_nlnob")
+normal_dialog_path = "res://assets/dialog/json-dialog/storybeat_1/dx-retiree-beat_1-filtered.json"
+pepsi_dialog_path = "res://assets/dialog/json-dialog/storybeat_2/dx-retiree-beat_2-unfiltered.json"
+metadata/_custom_type_script = "uid://dix121h46yokc"
+
+[node name="Retiree" parent="Npc2" unique_id=908568966 instance=ExtResource("8_w57m6")]
+position = Vector2(-244, -69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2" unique_id=877113921]
+position = Vector2(-1, -37.5)
+shape = SubResource("RectangleShape2D_drbwl")
